@@ -1,1 +1,11 @@
 @import "bootstrap/scss/bootstrap";
+
+.todoListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todoListItem__control button:not(:first-of-type) {
+  margin-left: 10px;
+}
