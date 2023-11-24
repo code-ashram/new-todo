@@ -1,13 +1,12 @@
-import { useReducer } from 'react'
-
-import mockData from '../../models/mockData.ts'
 import ListItem from './parts/ListItem.tsx'
-import reducer from '../../store/todoReducer.tsx'
-
-const initState = mockData
+import { useReducer } from 'react'
+import reducer, { ACTION_TYPE } from '../../store/todoReducer.tsx'
+import mockData from '../../models/mockData.ts'
 
 const List = () => {
-  const [state, dispatch] = useReducer(reducer, initState)
+
+  const [ tasks, dispatch] = useReducer(reducer, mockData)
+
   const handleDeleteTask = (id: string) => {
     dispatch({
       type: ACTION_TYPE.DELETE, payload: {
@@ -26,7 +25,7 @@ const List = () => {
 
   return (
     <ul className="list-group">
-      {state.map((todo) => (
+      {tasks.map((todo) => (
         <ListItem
           key={todo.id}
           todo={todo}

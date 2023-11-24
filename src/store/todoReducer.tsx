@@ -1,6 +1,6 @@
 import todoTask from '../models/todoTask.ts'
 
-const enum ACTION_TYPE {
+export const enum ACTION_TYPE {
   DONE,
   DELETE,
 }
