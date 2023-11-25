@@ -1,5 +1,18 @@
-import { createContext } from 'react'
+import { createContext, Dispatch } from 'react'
+import TodoTask from '../models/TodoTask.ts'
+import { Action } from './todoReducer.tsx'
+import mockData from '../models/mockData.ts'
 
-export const todoContext = createContext(null)
+type ContextType = {
+  tasks: TodoTask[],
+  dispatch: Dispatch<Action>
+}
 
-export default todoContext
+const initialValue: ContextType = {
+  tasks: mockData,
+  dispatch: () => {}
+}
+
+export const TodoContext = createContext<ContextType>(initialValue)
+
+export default TodoContext

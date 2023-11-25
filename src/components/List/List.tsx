@@ -1,25 +1,21 @@
+import { useContext } from 'react'
+
 import ListItem from './parts/ListItem.tsx'
-import { useReducer } from 'react'
-import reducer, { ACTION_TYPE } from '../../store/todoReducer.tsx'
-import mockData from '../../models/mockData.ts'
+import { ACTION_TYPE } from '../../store/todoReducer.tsx'
+import TodoContext from '../../store/todoContext.tsx'
 
 const List = () => {
-
-  const [ tasks, dispatch] = useReducer(reducer, mockData)
+  const { tasks, dispatch } = useContext(TodoContext)
 
   const handleDeleteTask = (id: string) => {
     dispatch({
-      type: ACTION_TYPE.DELETE, payload: {
-        id
-      }
+      type: ACTION_TYPE.DELETE, payload: { id }
     })
   }
 
   const toggleStatusTask = (id: string) => {
     dispatch({
-      type: ACTION_TYPE.DONE, payload: {
-        id
-      }
+      type: ACTION_TYPE.CHANGE_STATUS, payload: { id }
     })
   }
 

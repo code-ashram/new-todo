@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import todoTask from '../../../models/todoTask.ts'
+import TodoTask from '../../../models/TodoTask.ts'
 
 type Props = {
-  todo: todoTask,
+  todo: TodoTask,
   handleChangeStatus: (id: string) => void,
   onDelete: (id: string) => void,
 }

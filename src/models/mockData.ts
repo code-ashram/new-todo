@@ -1,6 +1,6 @@
-import todoTask from './todoTask.ts'
+import TodoTask from './TodoTask.ts'
 
-const mockData: todoTask[] = [
+const mockData: TodoTask[] = [
   {
     id: '1',
     title: 'Write markup',
