@@ -2,13 +2,13 @@ import { createContext, Dispatch } from 'react'
 import { SearchAction } from './searchReducer.tsx'
 
 type ContextType = {
-  searchResult: string,
-  searchDispatch: Dispatch<SearchAction>
+  search: string,
+  dispatch: Dispatch<SearchAction>
 }
 
 const initialValue = {
-  searchResult: "",
-  searchDispatch: () => {}
+  search: "",
+  dispatch: () => {}
 }
 
 export const searchContext = createContext<ContextType>(initialValue)

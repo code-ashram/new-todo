@@ -12,7 +12,8 @@ export type SearchAction = {
 const searchReducer = (state: string, action: SearchAction): string => {
   switch (action.type) {
     case SEARCH_ACTION_TYPE.FIND:
-      return state.filter((todo) => todo.title.toLowerCase().includes((action as SearchAction).payload.title))
+      console.log(state)
+      return action.payload.title
     default:
       return state
   }

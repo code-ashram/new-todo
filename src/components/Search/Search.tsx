@@ -1,14 +1,15 @@
 import { useContext, useRef } from 'react'
 import logoImg from '../../img/logo.png'
+import search from '../../img/search-ico.svg'
 import searchContext from '../../store/searchContext.tsx'
 import { SEARCH_ACTION_TYPE } from '../../store/searchReducer.tsx'
 
 const Search = () => {
-  const {searchDispatch} = useContext(searchContext)
+  const { dispatch } = useContext(searchContext)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleSearchTask = () => {
-    searchDispatch({
+    dispatch({
       type: SEARCH_ACTION_TYPE.FIND,
       payload: {
         title: inputRef.current?.value ?? ''
@@ -23,7 +24,7 @@ const Search = () => {
           <img className={'logo'} src={logoImg} alt="logo" />
         </a>
 
-        <form className="d-flex" role="search">
+        <div className="d-flex">
           <input
             className="form-control me-2"
             ref={inputRef}
@@ -32,9 +33,8 @@ const Search = () => {
             aria-label="Search"
             onChange={handleSearchTask}
           />
-
-          <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+          <img src={search} alt="search icon" />
+        </div>
       </div>
     </nav>
   )

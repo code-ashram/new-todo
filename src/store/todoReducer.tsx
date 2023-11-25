@@ -38,8 +38,6 @@ const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
         },
         ...state
       ]
-    case ACTION_TYPE.FIND:
-      return state.filter((todo) => todo.title.toLowerCase().includes((action as CreateAction).payload.title))
     default:
       return state
   }
