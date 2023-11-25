@@ -4,6 +4,7 @@ export const enum ACTION_TYPE {
   CHANGE_STATUS,
   DELETE,
   CREATE,
+  FIND,
 }
 
 export type EditDeleteAction = {
@@ -22,7 +23,7 @@ export type CreateAction = {
 
 export type Action = EditDeleteAction | CreateAction
 
-const reducer = (state: TodoTask[], action: Action): TodoTask[] => {
+const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
   switch (action.type) {
     case ACTION_TYPE.DELETE:
       return state.filter((todo) => todo.id !== (action as EditDeleteAction).payload.id)
@@ -37,9 +38,11 @@ const reducer = (state: TodoTask[], action: Action): TodoTask[] => {
         },
         ...state
       ]
+    case ACTION_TYPE.FIND:
+      return state.filter((todo) => todo.title.toLowerCase().includes((action as CreateAction).payload.title))
     default:
       return state
   }
 }
 
-export default reducer
+export default todoReducer
