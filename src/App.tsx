@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 
-import Search from './components/Search'
+import SearchFilter from './components/SearchFilter'
 import Form from './components/Form'
 import List from './components/List'
 import todoReducer from './store/todoReducer.tsx'
@@ -21,7 +21,7 @@ const App = () => {
         <TodoContext.Provider value={{ tasks, dispatch }}>
           <Form />
           <SearchContext.Provider value={{ search, dispatch: searchDispatch }}>
-            <Search />
+            <SearchFilter />
             <List />
           </SearchContext.Provider>
         </TodoContext.Provider>

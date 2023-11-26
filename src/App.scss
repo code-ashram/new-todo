@@ -1,5 +1,13 @@
 @import "bootstrap/scss/bootstrap";
 
+.searchInput {
+  height: 36px;
+}
+
+.searchIcon {
+  width: 25px;
+}
+
 .todoListItem {
   display: flex;
   align-items: center;
@@ -10,6 +18,16 @@
   margin-left: 10px;
 }
 
+.todoListItem:first-child {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .logo {
   width: 30px;
+}
+
+.logoIcon {
+  margin-right: 10px;
 }
