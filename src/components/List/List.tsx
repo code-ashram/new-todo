@@ -2,17 +2,36 @@ import { useContext, useMemo } from 'react'
 import ListItem from './parts/ListItem.tsx'
 import { ACTION_TYPE } from '../../store/todoReducer.tsx'
 import TodoContext from '../../store/todoContext.tsx'
-import SearchContext from '../../store/searchContext.tsx'
+import SearchContext from '../../store/SearchContext.tsx'
+import { STATUS, StatusContext } from '../../store/StatusContext.tsx'
 
 const List = () => {
   const { tasks, dispatch } = useContext(TodoContext)
   const { search } = useContext(SearchContext)
+  const { status } = useContext(StatusContext)
+
   const filteredTodoList = useMemo(() => tasks
-    .filter((todo) => todo.title.toLowerCase().includes(search.toLowerCase())), [tasks, search])
+    .filter((todo) => {
+      let isVisible: boolean
+
+      switch (status) {
+        case STATUS.COMPLETED:
+          isVisible = todo.isDone
+          break
+        case STATUS.ACTIVE:
+          isVisible = !todo.isDone
+          break
+        default:
+          isVisible = true
+      }
+
+      return isVisible && todo.title.toLowerCase().includes(search.toLowerCase())
+    }), [tasks, search, status])
 
   const handleDeleteTask = (id: string) => {
     dispatch({
-      type: ACTION_TYPE.DELETE, payload: { id }
+      type: ACTION_TYPE.DELETE,
+      payload: { id }
     })
   }
 

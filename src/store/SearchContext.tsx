@@ -11,6 +11,6 @@ const initialValue = {
   dispatch: () => {}
 }
 
-export const searchContext = createContext<ContextType>(initialValue)
+export const SearchContext = createContext<ContextType>(initialValue)
 
-export default searchContext
+export default SearchContext

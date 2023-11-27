@@ -4,7 +4,9 @@ export const enum ACTION_TYPE {
   CHANGE_STATUS,
   DELETE,
   CREATE,
-  FIND,
+  SHOW_ALL_TASKS,
+  FIND_UNCOMPLETED,
+  FIND_COMPLETED,
 }
 
 export type EditDeleteAction = {
