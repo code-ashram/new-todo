@@ -20,6 +20,13 @@ const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
       </div>
 
       <div className="todoListItem__control">
+        <p className="todoListItem__date">
+          {new Date(todo.creationTime).toLocaleString(
+            'en-US',
+            {day: '2-digit', month: 'long', year: "numeric" }
+          )}
+        </p>
+
         <button type="button" className="btn btn-success" onClick={() => handleChangeStatus(todo.id)}>Done</button>
 
         <button type="button" className="btn btn-danger" onClick={() => onDelete(todo.id)}>Delete</button>

@@ -4,6 +4,7 @@ import { ACTION_TYPE } from '../../store/todoReducer.tsx'
 import TodoContext from '../../store/todoContext.tsx'
 import SearchContext from '../../store/SearchContext.tsx'
 import { STATUS, StatusContext } from '../../store/StatusContext.tsx'
+import { sortListByDate } from '../../utils/utils.ts'
 
 const List = () => {
   const { tasks, dispatch } = useContext(TodoContext)
@@ -43,7 +44,7 @@ const List = () => {
 
   return (
     <ul className="list-group">
-      {filteredTodoList.map((todo) => (
+      {sortListByDate(filteredTodoList).map((todo) => (
         <ListItem
           key={todo.id}
           todo={todo}

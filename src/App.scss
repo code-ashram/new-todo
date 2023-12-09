@@ -14,7 +14,16 @@
   justify-content: space-between;
 }
 
-.todoListItem__control button:not(:first-of-type) {
+.todoListItem__control {
+  display: flex;
+  align-items: center;
+}
+
+.todoListItem__date {
+  margin: 0;
+}
+
+.todoListItem__control button {
   margin-left: 10px;
 }
 
