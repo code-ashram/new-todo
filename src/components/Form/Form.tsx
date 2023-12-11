@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react'
+import { ChangeEvent, useContext, useRef, useState } from 'react'
 import logoImg from '../../img/logo.png'
 import TodoContext from '../../store/todoContext.tsx'
 import { ACTION_TYPE } from '../../store/todoReducer.tsx'
@@ -6,14 +6,24 @@ import { ACTION_TYPE } from '../../store/todoReducer.tsx'
 const Form = () => {
   const { dispatch } = useContext(TodoContext)
   const inputRef = useRef<HTMLInputElement>(null)
+  const [isDisabled, setIsDisabled] = useState<boolean>(true)
+
+  const handleEnableButton = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value) {
+      setIsDisabled(false)
+    } else {
+      setIsDisabled(true)
+    }
+  }
 
   const handleCreateTask = () => {
-    dispatch({
-      type: ACTION_TYPE.CREATE,
-      payload: {
-        title: inputRef.current?.value ?? ''
-      }
-    })
+    if (inputRef.current?.value.trim())
+      dispatch({
+        type: ACTION_TYPE.CREATE,
+        payload: {
+          title: inputRef.current.value.trim()
+        }
+      })
 
     if (inputRef.current) inputRef.current.value = ''
   }
@@ -27,6 +37,7 @@ const Form = () => {
       <input
         className="form-control"
         type="text"
+        onChange={handleEnableButton}
         ref={inputRef}
         placeholder="Add new task"
         aria-label="Recipient's username"
@@ -34,6 +45,7 @@ const Form = () => {
       />
 
       <button
+        disabled={isDisabled}
         className="btn btn-primary"
         type="button"
         id="button-addon2"

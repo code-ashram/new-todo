@@ -36,7 +36,7 @@ const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
         {
           id: crypto.randomUUID(),
           isDone: false,
-          title: (action as CreateAction).payload.title ?? '',
+          title: (action as CreateAction).payload.title.trim(),
           creationTime: new Date().toISOString().slice(0,10)
         },
         ...state
