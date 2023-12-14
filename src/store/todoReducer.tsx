@@ -30,14 +30,19 @@ const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
     case ACTION_TYPE.DELETE:
       return state.filter((todo) => todo.id !== (action as EditDeleteAction).payload.id)
     case ACTION_TYPE.CHANGE_STATUS:
-      return state.map((todo) => todo.id === (action as EditDeleteAction).payload.id ? { ...todo, isDone: !todo.isDone } : todo)
+      return state.map((todo) => todo.id === (action as EditDeleteAction).payload.id
+        ? {
+          ...todo,
+          isDone: !todo.isDone
+        }
+        : todo)
     case ACTION_TYPE.CREATE:
       return [
         {
           id: crypto.randomUUID(),
           isDone: false,
           title: (action as CreateAction).payload.title.trim(),
-          creationTime: new Date().toISOString().slice(0,10)
+          creationTime: new Date().toISOString().slice(0, 10)
         },
         ...state
       ]

@@ -38,7 +38,8 @@ const List = () => {
 
   const toggleStatusTask = (id: string) => {
     dispatch({
-      type: ACTION_TYPE.CHANGE_STATUS, payload: { id }
+      type: ACTION_TYPE.CHANGE_STATUS,
+      payload: { id }
     })
   }
 

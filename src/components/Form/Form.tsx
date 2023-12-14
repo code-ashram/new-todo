@@ -6,7 +6,7 @@ import { ACTION_TYPE } from '../../store/todoReducer.tsx'
 const Form = () => {
   const { dispatch } = useContext(TodoContext)
   const [inputValue, setInputValue] = useState<string>('')
-  const isValid: boolean = useMemo(() => Boolean(!inputValue), [inputValue])
+  const isValid: boolean = useMemo(() => Boolean(inputValue), [inputValue])
 
   const handleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
@@ -41,7 +41,7 @@ const Form = () => {
       />
 
       <button
-        disabled={isValid}
+        disabled={!isValid}
         className="btn btn-primary"
         type="button"
         id="button-addon2"

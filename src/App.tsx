@@ -5,13 +5,13 @@ import Form from './components/Form'
 import List from './components/List'
 import todoReducer from './store/todoReducer.tsx'
 import searchReducer from './store/searchReducer.tsx'
+import statusReducer from './store/statusReducer.ts'
 import TodoContext from './store/todoContext.tsx'
 import SearchContext from './store/SearchContext.tsx'
+import FilterContext, { STATUS } from './store/StatusContext.tsx'
 import mockData from './models/mockData.ts'
 
 import './App.scss'
-import FilterContext, { STATUS } from './store/StatusContext.tsx'
-import statusReducer from './store/statusReducer.ts'
 
 const App = () => {
   const [tasks, dispatchTodo] = useReducer(todoReducer, mockData)
