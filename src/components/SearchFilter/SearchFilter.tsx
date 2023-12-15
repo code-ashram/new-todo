@@ -46,7 +46,7 @@ const SearchFilter = () => {
         <div className="tabWrapper d-flex">
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link active"
+              className="nav-link tab-btn active"
               id="home-tab"
               data-bs-toggle="tab"
               data-bs-target="#home-tab-pane"
@@ -62,7 +62,7 @@ const SearchFilter = () => {
 
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link"
+              className="nav-link tab-btn"
               id="profile-tab"
               data-bs-toggle="tab"
               data-bs-target="#profile-tab-pane"
@@ -78,7 +78,7 @@ const SearchFilter = () => {
 
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link"
+              className="nav-link tab-btn"
               id="contact-tab"
               data-bs-toggle="tab"
               data-bs-target="#contact-tab-pane"
@@ -94,15 +94,23 @@ const SearchFilter = () => {
         </div>
 
         <div className="d-flex">
-          <input
-            className="form-control me-2 searchInput"
-            ref={inputRef}
-            type="search"
-            placeholder="Search..."
-            aria-label="search"
-            onChange={handleSearchTask}
-          />
-          <img className="searchIcon" src={search} alt="search icon" />
+          <select className="form-select" aria-label="Default select example">
+            <option value="0" selected>All</option>
+            <option value="30">Last month</option>
+            <option value="7">Last week</option>
+          </select>
+
+          <div className="search-wrapper">
+            <input
+              className="form-control me-2 searchInput"
+              ref={inputRef}
+              type="search"
+              placeholder="Search..."
+              aria-label="search"
+              onChange={handleSearchTask}
+            />
+            <img className="searchIcon" src={search} alt="search icon" />
+          </div>
         </div>
       </ul>
     </>

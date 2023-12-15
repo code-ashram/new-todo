@@ -1,17 +1,19 @@
 @import "bootstrap/scss/bootstrap";
 
 .searchInput {
-  height: 36px;
+  height: 38px;
 }
 
 .searchIcon {
   width: 25px;
+  height: 37px;
 }
 
 .todoListItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px;
 }
 
 .todoListItem__control {
@@ -39,4 +41,18 @@
 
 .logoIcon {
   margin-right: 10px;
+}
+
+.tab-btn {
+  height: 53px;
+}
+
+.search-wrapper {
+  display: flex;
+  margin-left: 12px;
+}
+
+.form-select {
+  width: 150px;
+  height: 38px;
 }
