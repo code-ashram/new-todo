@@ -1,8 +1,7 @@
 import { createContext, Dispatch } from 'react'
-import { Action } from './statusReducer.ts'
+import { Action } from './StatusReducer.ts'
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const enum STATUS {
+export enum STATUS {
   ALL,
   ACTIVE,
   COMPLETED,

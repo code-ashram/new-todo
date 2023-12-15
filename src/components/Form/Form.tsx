@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useMemo, useState } from 'react'
 import logoImg from '../../img/logo.png'
-import TodoContext from '../../store/todoContext.tsx'
-import { ACTION_TYPE } from '../../store/todoReducer.tsx'
+import TodoContext from '../../store/TodoContext.ts'
+import { ACTION_TYPE } from '../../store/TodoReducer.ts'
 
 const Form = () => {
   const { dispatch } = useContext(TodoContext)

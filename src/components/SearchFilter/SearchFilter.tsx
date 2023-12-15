@@ -2,19 +2,32 @@ import { useContext, useRef } from 'react'
 import * as bootstrap from 'bootstrap'
 import search from '../../img/search-ico.svg'
 
-import { SEARCH_ACTION_TYPE } from '../../store/searchReducer.tsx'
-import StatusContext, { STATUS } from '../../store/StatusContext.tsx'
-import { ACTION_TYPE } from '../../store/statusReducer.ts'
-import SearchContext from '../../store/SearchContext.tsx'
+import { SEARCH_ACTION_TYPE } from '../../store/SearchReducer.ts'
+import StatusContext, { STATUS } from '../../store/StatusContext.ts'
+import { ACTION_STATUS } from '../../store/StatusReducer.ts'
+import SearchContext from '../../store/SearchContext.ts'
+import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
+import { ACTION_PERIOD } from '../../store/PeriodReducer.ts'
 
 const SearchFilter = () => {
+  const inputRef = useRef<HTMLInputElement>(null)
   const { dispatch: dispatchSearch } = useContext(SearchContext)
   const { dispatch: dispatchStatus } = useContext(StatusContext)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const { dispatch: dispatchPeriod } = useContext(PeriodContext)
+
+  const handleChangePeriod = (period: PERIOD) => {
+    dispatchPeriod({
+      type: ACTION_PERIOD,
+      payload: {
+        period
+      }
+    })
+    console.log(period)
+  }
 
   const handleChangeStatus = (status: STATUS) => {
     dispatchStatus({
-      type: ACTION_TYPE,
+      type: ACTION_STATUS,
       payload: {
         status
       }
@@ -95,9 +108,9 @@ const SearchFilter = () => {
 
         <div className="d-flex">
           <select className="form-select" aria-label="Default select example">
-            <option value="0" selected>All</option>
-            <option value="30">Last month</option>
-            <option value="7">Last week</option>
+            <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
+            <option value="2" onClick={() => handleChangePeriod(PERIOD.MONTH)}>Last month</option>
+            <option value="3" onClick={() => handleChangePeriod(PERIOD.WEEK)}>Last week</option>
           </select>
 
           <div className="search-wrapper">

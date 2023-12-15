@@ -3,20 +3,23 @@ import { useReducer } from 'react'
 import SearchFilter from './components/SearchFilter'
 import Form from './components/Form'
 import List from './components/List'
-import todoReducer from './store/todoReducer.tsx'
-import searchReducer from './store/searchReducer.tsx'
-import statusReducer from './store/statusReducer.ts'
-import TodoContext from './store/todoContext.tsx'
-import SearchContext from './store/SearchContext.tsx'
-import FilterContext, { STATUS } from './store/StatusContext.tsx'
+import todoReducer from './store/TodoReducer.ts'
+import searchReducer from './store/SearchReducer.ts'
+import statusReducer from './store/StatusReducer.ts'
+import TodoContext from './store/TodoContext.ts'
+import SearchContext from './store/SearchContext.ts'
+import FilterContext, { STATUS } from './store/StatusContext.ts'
 import mockData from './models/mockData.ts'
 
 import './App.scss'
+import PeriodContext, { PERIOD } from './store/PeriodContext.ts'
+import periodReducer from './store/PeriodReducer.ts'
 
 const App = () => {
   const [tasks, dispatchTodo] = useReducer(todoReducer, mockData)
   const [search, dispatchSearch] = useReducer(searchReducer, '')
   const [status, dispatchStatus] = useReducer(statusReducer, STATUS.ALL)
+  const [period, dispatchPeriod] = useReducer(periodReducer, PERIOD.ALL_TIME)
 
   return (
     <div className="card">
@@ -25,8 +28,10 @@ const App = () => {
           <Form />
           <FilterContext.Provider value={{ status, dispatch: dispatchStatus }}>
             <SearchContext.Provider value={{ search, dispatch: dispatchSearch }}>
-              <SearchFilter />
-              <List />
+              <PeriodContext.Provider value={{period, dispatch: dispatchPeriod}}>
+                <SearchFilter />
+                <List />
+              </PeriodContext.Provider>
             </SearchContext.Provider>
           </FilterContext.Provider>
         </TodoContext.Provider>

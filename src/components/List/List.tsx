@@ -1,15 +1,17 @@
 import { useContext, useMemo } from 'react'
 import ListItem from './parts/ListItem.tsx'
-import { ACTION_TYPE } from '../../store/todoReducer.tsx'
-import TodoContext from '../../store/todoContext.tsx'
-import SearchContext from '../../store/SearchContext.tsx'
-import { STATUS, StatusContext } from '../../store/StatusContext.tsx'
+import { ACTION_TYPE } from '../../store/TodoReducer.ts'
+import TodoContext from '../../store/TodoContext.ts'
+import SearchContext from '../../store/SearchContext.ts'
+import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
+import { STATUS, StatusContext } from '../../store/StatusContext.ts'
 import { sortListByDate } from '../../utils/utils.ts'
 
 const List = () => {
   const { tasks, dispatch } = useContext(TodoContext)
   const { search } = useContext(SearchContext)
   const { status } = useContext(StatusContext)
+  const { period } = useContext(PeriodContext)
 
   const filteredTodoList = useMemo(() => tasks
     .filter((todo) => {

@@ -1,5 +1,5 @@
 import { createContext, Dispatch } from 'react'
-import { SearchAction } from './searchReducer.tsx'
+import { SearchAction } from './SearchReducer.ts'
 
 type ContextType = {
   search: string,
