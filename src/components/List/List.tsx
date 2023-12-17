@@ -17,6 +17,10 @@ const List = () => {
     .filter((todo) => {
       let isVisible: boolean
 
+      const isAvailable: boolean = period === PERIOD.ALL_TIME
+        ? true
+        : new Date(todo.creationTime) > new Date(new Date().setDate(new Date().getDate() - period))
+
       switch (status) {
         case STATUS.COMPLETED:
           isVisible = todo.isDone
@@ -28,8 +32,8 @@ const List = () => {
           isVisible = true
       }
 
-      return isVisible && todo.title.toLowerCase().includes(search.toLowerCase())
-    }), [tasks, search, status])
+      return isVisible && isAvailable && todo.title.toLowerCase().includes(search.toLowerCase())
+    }), [tasks, period, search, status])
 
   const handleDeleteTask = (id: string) => {
     dispatch({

@@ -22,7 +22,6 @@ const SearchFilter = () => {
         period
       }
     })
-    console.log(period)
   }
 
   const handleChangeStatus = (status: STATUS) => {
