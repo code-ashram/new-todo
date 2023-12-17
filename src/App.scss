@@ -56,3 +56,11 @@
   width: 150px;
   height: 38px;
 }
+
+.form-tip {
+  margin: 0 10px 0 0;
+}
+
+.form-check:not(:first-of-type) {
+  margin-left: 15px;
+}
