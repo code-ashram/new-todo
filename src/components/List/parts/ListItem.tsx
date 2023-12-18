@@ -1,5 +1,7 @@
 import { FC } from 'react'
+
 import TodoTask from '../../../models/TodoTask.ts'
+import { setPriorityImg } from '../../../utils/utils.ts'
 
 type Props = {
   todo: TodoTask,
@@ -8,6 +10,7 @@ type Props = {
 }
 
 const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
+
 
   return (
     <li className="todoListItem list-group-item">
@@ -20,10 +23,12 @@ const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
       </div>
 
       <div className="todoListItem__control">
+        <img className="priority" src={setPriorityImg(todo.priority)} alt="priority img"/>
+
         <p className="todoListItem__date">
           {new Date(todo.creationTime).toLocaleString(
             'en-US',
-            {day: '2-digit', month: 'long', year: "numeric" }
+            { day: '2-digit', month: 'long', year: 'numeric' }
           )}
         </p>
 

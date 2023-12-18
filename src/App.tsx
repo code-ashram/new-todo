@@ -28,7 +28,7 @@ const App = () => {
           <Form />
           <FilterContext.Provider value={{ status, dispatch: dispatchStatus }}>
             <SearchContext.Provider value={{ search, dispatch: dispatchSearch }}>
-              <PeriodContext.Provider value={{period, dispatch: dispatchPeriod}}>
+              <PeriodContext.Provider value={{ period, dispatch: dispatchPeriod }}>
                 <SearchFilter />
                 <List />
               </PeriodContext.Provider>

@@ -25,7 +25,7 @@
   margin: 0;
 }
 
-.todoListItem__control button {
+.todoListItem__control * {
   margin-left: 10px;
 }
 
@@ -63,4 +63,9 @@
 
 .form-check:not(:first-of-type) {
   margin-left: 15px;
+}
+
+.priority {
+  width: 20px;
+  height: 20px;
 }
