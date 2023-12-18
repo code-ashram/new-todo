@@ -43,6 +43,7 @@ const SearchFilter = () => {
   }
 
   const triggerTabList = document.querySelectorAll('#myTab button')
+
   triggerTabList.forEach(triggerEl => {
     const tabTrigger = new bootstrap.Tab(triggerEl)
 
@@ -106,7 +107,7 @@ const SearchFilter = () => {
         </div>
 
         <div className="d-flex">
-          <select className="form-select" aria-label="Default select example">
+          <select className="form-select" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
             <option value="2" onClick={() => handleChangePeriod(PERIOD.MONTH)}>Last month</option>
             <option value="3" onClick={() => handleChangePeriod(PERIOD.WEEK)}>Last week</option>
@@ -116,6 +117,7 @@ const SearchFilter = () => {
             <input
               className="form-control me-2 searchInput"
               ref={inputRef}
+              name="search"
               type="search"
               placeholder="Search..."
               aria-label="search"

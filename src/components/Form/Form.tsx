@@ -63,6 +63,7 @@ const Form = () => {
                   className="form-control"
                   value={inputValue}
                   onChange={handleChangeValue}
+                  name="taskInput"
                   type="text"
                   placeholder="Add new task"
                   aria-label="Recipient's username"
