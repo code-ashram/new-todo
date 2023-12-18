@@ -4,9 +4,6 @@ export const enum ACTION_TYPE {
   CHANGE_STATUS,
   DELETE,
   CREATE,
-  SHOW_ALL_TASKS,
-  FIND_UNCOMPLETED,
-  FIND_COMPLETED,
 }
 
 export type EditDeleteAction = {
@@ -19,7 +16,9 @@ export type EditDeleteAction = {
 export type CreateAction = {
   type: ACTION_TYPE
   payload: {
-    title: string
+    title: string,
+    isDone: boolean,
+    priority: string
   }
 }
 
@@ -40,9 +39,10 @@ const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
       return [
         {
           id: crypto.randomUUID(),
-          isDone: false,
+          isDone: (action as CreateAction).payload.isDone,
           title: (action as CreateAction).payload.title.trim(),
-          creationTime: new Date().toISOString().slice(0, 10)
+          creationTime: new Date().toISOString().slice(0, 10),
+          priority: (action as CreateAction).payload.priority
         },
         ...state
       ]
