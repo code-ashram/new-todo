@@ -11,7 +11,6 @@ type Props = {
 
 const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
 
-
   return (
     <li className="todoListItem list-group-item">
       <div className="todoListItem__title">
@@ -23,7 +22,7 @@ const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
       </div>
 
       <div className="todoListItem__control">
-        <img className="priority" src={setPriorityImg(todo.priority)} alt="priority img"/>
+        <img className="priority" src={setPriorityImg(todo.priority)} alt="priority img" />
 
         <p className="todoListItem__date">
           {new Date(todo.creationTime).toLocaleString(
