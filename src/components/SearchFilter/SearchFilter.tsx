@@ -9,40 +9,28 @@ import SearchContext from '../../store/SearchContext.ts'
 import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
 import { ACTION_PERIOD } from '../../store/PeriodReducer.ts'
 import TodoForm from '../TodoForm'
-// import TodoContext from '../../store/TodoContext.ts'
-// import { ACTION_TYPE } from '../../store/TodoReducer.ts'
+import { ACTION_TYPE } from '../../store/TodoReducer.ts'
+import TodoContext from '../../store/TodoContext.ts'
+import TodoTask from '../../models/TodoTask.ts'
 
 const SearchFilter: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
-  // const { dispatch: dispatchTodo } = useContext(TodoContext)
+  const { dispatch: dispatchTodo } = useContext(TodoContext)
   const { dispatch: dispatchSearch } = useContext(SearchContext)
   const { dispatch: dispatchStatus } = useContext(StatusContext)
   const { dispatch: dispatchPeriod } = useContext(PeriodContext)
   const [showForm, setShowForm] = useState<boolean>(false)
 
-  // interface FormElements extends HTMLFormControlsCollection {
-  //   priority: HTMLSelectElement
-  // }
-  //
-  // interface TodoFormElement extends HTMLFormElement {
-  //   readonly elements: FormElements
-  // }
-
-  // const handleCreateTask = (e: FormEvent<TodoFormElement>) => {
-  //   e.preventDefault()
-  //
-  //   if (inputValue.trim())
-  //     dispatchTodo({
-  //       type: ACTION_TYPE.CREATE,
-  //       payload: {
-  //         title: inputValue.trim(),
-  //         priority: e.currentTarget.elements.priority.value,
-  //         isDone
-  //       }
-  //     })
-  //
-  //   if (inputValue) setInputValue('')
-  // }
+  const handleCreateTask = (todo: TodoTask) => {
+    dispatchTodo({
+      type: ACTION_TYPE.CREATE,
+      payload: {
+        title: todo.title,
+        priority: todo.priority,
+        isDone: todo.isDone
+      }
+    })
+  }
 
   const handleChangePeriod = (period: PERIOD) => {
     dispatchPeriod({
@@ -84,7 +72,7 @@ const SearchFilter: FC = () => {
 
   return (
     <>
-      <TodoForm isOpen={showForm} onClose={() => setShowForm(false)} onSubmit={() => console.log(1)} />
+      <TodoForm isOpen={showForm} onClose={() => setShowForm(false)} onSubmit={handleCreateTask} />
 
       <ul className="nav nav-tabs d-flex justify-content-between" id="myTab" role="tablist">
         <div className="tabWrapper d-flex">
