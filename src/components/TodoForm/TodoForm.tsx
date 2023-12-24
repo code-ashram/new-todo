@@ -16,7 +16,7 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit }) => {
       title: '',
       isDone: false,
       priority: 'Mid',
-      creationTime: new Date().toISOString().slice(0, 10)
+      creationTime: new Date().toISOString()
     })
   const isValid: boolean = useMemo(() => Boolean(todo.title), [todo.title])
 
