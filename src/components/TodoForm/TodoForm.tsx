@@ -2,6 +2,7 @@ import { FC, FormEvent, useMemo, useState } from 'react'
 
 import logoImg from '../../img/logo.png'
 import TodoTask from '../../models/TodoTask.ts'
+import { PRIORITY } from '../../utils/utils.ts'
 
 type Props = {
   isOpen: boolean,
@@ -62,9 +63,11 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit }) => {
 
               <select className="form-select" id="priority" aria-label="Default select example"
                       onChange={(e) => handleChangeTodo({ priority: e.target.value })}>
-                <option value="High">High</option>
-                <option value="Mid">Mid</option>
-                <option value="Low">Low</option>
+                <option value={PRIORITY.HIGH}>High</option>
+
+                <option value={PRIORITY.MID}>Mid</option>
+
+                <option value={PRIORITY.LOW}>Low</option>
               </select>
             </div>
 

@@ -10,17 +10,23 @@ export const sortListByDate = (list: TodoTask[]): TodoTask[] =>
       : -1
   )
 
-export const setPriorityImg = (priority: string):string => {
+export enum PRIORITY  {
+  HIGH = "High",
+  MID = "Mid",
+  LOW = "Low"
+}
+
+export const setPriorityImg = (priority: PRIORITY):string => {
   let priorityImg: string
 
   switch (priority) {
-    case "High":
+    case PRIORITY.HIGH:
       priorityImg = highPriorityIco
       break
-    case "Mid":
+    case PRIORITY.MID:
       priorityImg = midPriorityIco
       break
-    case "Low":
+    case PRIORITY.LOW:
       priorityImg = lowPriorityIco
       break
     default:

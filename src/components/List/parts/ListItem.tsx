@@ -9,7 +9,7 @@ type Props = {
   onDelete: (id: string) => void,
 }
 
-const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
+const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
 
   return (
     <li className="todoListItem list-group-item">
@@ -29,9 +29,6 @@ const ListItem: FC<Props> = ({todo, handleChangeStatus, onDelete }) => {
             'en-US',
             { day: '2-digit', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' }
           )}
-
-          {/* {new Date(todo.creationTime).toLocaleDateString()} */}
-          {/* {new Date().toLocaleDateString()} */}
         </p>
 
         <button type="button" className="btn btn-success" onClick={() => handleChangeStatus(todo.id)}>Done</button>
