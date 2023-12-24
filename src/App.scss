@@ -16,17 +16,18 @@
   padding: 10px;
 }
 
-.todoListItem__control {
+.todoListItemControl {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.todoListItem__date {
-  margin: 0;
+.todoListItemDate {
+  width: 235px;
+  margin-bottom: 0;
 }
 
-.todoListItem__control p {
+.todoListItemControl p {
   margin-left: 10px;
 }
 
@@ -38,32 +39,19 @@
 
 .todoListItemControlButtons {
   position: absolute;
-  top: -16px;
-  right: 54px;
+  top: -19px;
+  right: 22px;
   z-index: 10;
+}
+
+.todoListItemDetails {
+  text-align: center;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 15px;
-  border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
-}
-
-.triangle {
-  position: absolute;
-  right: -11px;
-  bottom: 25px;
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-color: #212529;
-  border-top: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
-  border-right: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
-  transform: rotate(45deg);
-  z-index: -10;
-}
-
-.todoListItemControlButtons button:last-of-type {
-  margin-left: 15px;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  border-radius: 50%;
+  border: none
 }
 
 .btn-warning {

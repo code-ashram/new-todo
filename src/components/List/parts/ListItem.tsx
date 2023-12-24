@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 
 import TodoTask from '../../../models/TodoTask.ts'
 import { setPriorityImg } from '../../../utils/utils.ts'
+import threeDots from '../../../img/three-dots.svg'
 
 type Props = {
   todo: TodoTask,
@@ -11,10 +12,14 @@ type Props = {
 
 const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
 
-  const [isVisible, setisVisible] = useState<boolean>(false)
+  const [isVisible, setIsVisible] = useState<boolean>(false)
 
-  const handleShowControl = () => {
-    setisVisible(!isVisible)
+  const handleToggleControl = () => {
+    setIsVisible(prevVisible => (!prevVisible))
+  }
+
+  const handleClosePopup = () => {
+    setIsVisible(false)
   }
 
   return (
@@ -27,27 +32,41 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
         <label className="form-check-label" htmlFor={todo.id}>{todo.title}</label>
       </div>
 
-      <div className="todoListItem__control">
+      <div className="todoListItemControl">
         <img className="priority" src={setPriorityImg(todo.priority)} alt="priority img" />
 
-        <p className="todoListItem__date">
+        <p className="todoListItemDate">
           {new Date(todo.creationTime).toLocaleString(
             'en-US',
-            { day: '2-digit', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' }
+            {
+              day: '2-digit',
+              month: 'long',
+              year: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric'
+            }
           )}
         </p>
 
-        <button type="button" className="btn btn-outline-secondary" onClick={handleShowControl}>...</button>
+        <div className="todoListItemControlWrap" onMouseLeave={handleClosePopup}>
+          <button type="button" className="btn btn-outline-secondary todoListItemDetails" onClick={handleToggleControl}>
+            <img src={threeDots} alt="threeDots" />
+          </button>
 
-        {isVisible &&
-          <div className="card todoListItemControlButtons">
-            <button type="button" className="btn btn-warning" onClick={() => handleChangeStatus(todo.id)}>Edit</button>
+          {isVisible &&
+            <div className="list-group todoListItemControlButtons">
+              <button type="button" className="list-group-item list-group-item-action" aria-current="true"
+                      onClick={() => handleChangeStatus(todo.id)}>
+                Edit
+              </button>
 
-            <button type="button" className="btn btn-danger" onClick={() => onDelete(todo.id)}>Delete</button>
-
-            <span className="triangle border-1"></span>
-          </div>
-        }
+              <button type="button" className="list-group-item list-group-item-action"
+                      onClick={() => onDelete(todo.id)}>
+                Delete
+              </button>
+            </div>
+          }
+        </div>
       </div>
     </li>
   )
