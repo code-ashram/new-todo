@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import TodoTask from '../../../models/TodoTask.ts'
 import { setPriorityImg } from '../../../utils/utils.ts'
@@ -10,6 +10,12 @@ type Props = {
 }
 
 const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
+
+  const [isVisible, setisVisible] = useState<boolean>(false)
+
+  const handleShowControl = () => {
+    setisVisible(!isVisible)
+  }
 
   return (
     <li className="todoListItem list-group-item">
@@ -31,9 +37,17 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
           )}
         </p>
 
-        <button type="button" className="btn btn-success" onClick={() => handleChangeStatus(todo.id)}>Done</button>
+        <button type="button" className="btn btn-outline-secondary" onClick={handleShowControl}>...</button>
 
-        <button type="button" className="btn btn-danger" onClick={() => onDelete(todo.id)}>Delete</button>
+        {isVisible &&
+          <div className="card todoListItemControlButtons">
+            <button type="button" className="btn btn-warning" onClick={() => handleChangeStatus(todo.id)}>Edit</button>
+
+            <button type="button" className="btn btn-danger" onClick={() => onDelete(todo.id)}>Delete</button>
+
+            <span className="triangle border-1"></span>
+          </div>
+        }
       </div>
     </li>
   )

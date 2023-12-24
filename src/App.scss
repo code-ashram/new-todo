@@ -17,6 +17,7 @@
 }
 
 .todoListItem__control {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -25,7 +26,7 @@
   margin: 0;
 }
 
-.todoListItem__control * {
+.todoListItem__control p {
   margin-left: 10px;
 }
 
@@ -33,6 +34,40 @@
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.todoListItemControlButtons {
+  position: absolute;
+  top: -16px;
+  right: 54px;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+  border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+}
+
+.triangle {
+  position: absolute;
+  right: -11px;
+  bottom: 25px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #212529;
+  border-top: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+  border-right: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+  transform: rotate(45deg);
+  z-index: -10;
+}
+
+.todoListItemControlButtons button:last-of-type {
+  margin-left: 15px;
+}
+
+.btn-warning {
+  color: white;
 }
 
 .logo {

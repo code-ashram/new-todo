@@ -16,7 +16,7 @@ export enum PRIORITY  {
   LOW = "Low"
 }
 
-export const setPriorityImg = (priority: PRIORITY):string => {
+export const setPriorityImg = (priority: string):string => {
   let priorityImg: string
 
   switch (priority) {
