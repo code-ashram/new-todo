@@ -8,6 +8,7 @@ type Props = {
   isOpen: boolean,
   onClose: () => void,
   onSubmit: (todo: TodoTask) => void,
+  todo?: (todo: TodoTask) => void,
 }
 
 const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit }) => {

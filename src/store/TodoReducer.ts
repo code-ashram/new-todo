@@ -4,6 +4,7 @@ export const enum ACTION_TYPE {
   CHANGE_STATUS,
   DELETE,
   CREATE,
+  EDIT,
 }
 
 export type EditDeleteAction = {
@@ -16,6 +17,16 @@ export type EditDeleteAction = {
 export type CreateAction = {
   type: ACTION_TYPE
   payload: {
+    title: string,
+    isDone: boolean,
+    priority: string
+  }
+}
+
+export type EditAction = {
+  type: ACTION_TYPE
+  payload: {
+    id: string,
     title: string,
     isDone: boolean,
     priority: string
@@ -46,6 +57,15 @@ const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
         },
         ...state
       ]
+    case ACTION_TYPE.EDIT:
+      return state.map((todo) => todo.id === (action as EditAction).payload.id
+        ? {
+          ...todo,
+          isDone: (action as EditAction).payload.isDone,
+          title: (action as EditAction).payload.title.trim(),
+          priority: (action as EditAction).payload.priority,
+        }
+        : todo)
     default:
       return state
   }

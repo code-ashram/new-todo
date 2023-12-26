@@ -7,10 +7,11 @@ import threeDots from '../../../img/three-dots.svg'
 type Props = {
   todo: TodoTask,
   handleChangeStatus: (id: string) => void,
+  handleEditTodo: (id: string) => void,
   onDelete: (id: string) => void,
 }
 
-const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
+const ListItem: FC<Props> = ({ todo, handleChangeStatus, handleEditTodo, onDelete }) => {
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
@@ -56,7 +57,7 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
           {isVisible &&
             <div className="list-group todoListItemControlButtons">
               <button type="button" className="list-group-item list-group-item-action" aria-current="true"
-                      onClick={() => handleChangeStatus(todo.id)}>
+                      onClick={() => handleEditTodo(todo.id)}>
                 Edit
               </button>
 
