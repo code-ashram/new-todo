@@ -49,6 +49,13 @@ const List = () => {
     })
   }
 
+  const handleEditTask = (id: string) => {
+    dispatch({
+      type: ACTION_TYPE.EDIT,
+      payload: { id }
+    })
+  }
+
   return (
     <ul className="list-group">
       {sortListByDate(filteredTodoList).map((todo) => (
@@ -57,6 +64,7 @@ const List = () => {
           todo={todo}
           handleChangeStatus={toggleStatusTask}
           onDelete={handleDeleteTask}
+          onEdit={handleEditTask}
         />
       ))}
     </ul>
