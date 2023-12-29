@@ -29,7 +29,8 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
 
   return (
     <>
-      {showForm && <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={() => console.log(todo)} todo={todo}/>}
+      {showForm &&
+        <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={() => console.log(todo)} todo={todo} />}
 
       <li className="todoListItem list-group-item">
         <div className="todoListItem__title">
@@ -57,20 +58,27 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
           </p>
 
           <div className="todoListItemControlWrap" onMouseLeave={handleClosePopup}>
-            <button type="button" className="btn btn-outline-secondary todoListItemDetails"
-                    onClick={handleToggleControl}>
+            <button
+              className="btn btn-outline-secondary todoListItemDetails"
+              type="button"
+              onClick={handleToggleControl}>
               <img src={threeDots} alt="threeDots" />
             </button>
 
             {isVisible &&
               <div className="list-group todoListItemControlButtons">
-                <button type="button" className="list-group-item list-group-item-action" aria-current="true"
-                        onClick={handleShowForm}>
+                <button
+                  className="list-group-item list-group-item-action"
+                  type="button"
+                  aria-current="true"
+                  onClick={handleShowForm}>
                   Edit
                 </button>
 
-                <button type="button" className="list-group-item list-group-item-action"
-                        onClick={() => onDelete(todo.id)}>
+                <button
+                  className="list-group-item list-group-item-action"
+                  type="button"
+                  onClick={() => onDelete(todo.id)}>
                   Delete
                 </button>
               </div>

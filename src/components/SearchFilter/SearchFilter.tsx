@@ -130,9 +130,11 @@ const SearchFilter: FC = () => {
         </button>
 
         <div className="d-flex">
-          <select className="form-select" aria-label="Default select example" name="formSelect">
+          <select className="form-select filterSelect" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
+
             <option value="2" onClick={() => handleChangePeriod(PERIOD.MONTH)}>Last month</option>
+
             <option value="3" onClick={() => handleChangePeriod(PERIOD.WEEK)}>Last week</option>
           </select>
 

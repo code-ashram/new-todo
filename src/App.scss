@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  border-top: none;
 }
 
 .todoListItemControl {
@@ -75,17 +76,8 @@
   margin-left: 12px;
 }
 
-.form-select {
-  width: 150px;
-  height: 38px;
-}
-
 .form-tip {
   margin: 0 10px 0 0;
-}
-
-.form-check:not(:first-of-type) {
-  margin-left: 15px;
 }
 
 .priority {
@@ -93,8 +85,13 @@
   height: 24px;
 }
 
+.filterSelect {
+  height: 38px;
+}
+
 dialog {
-  text-align: center;
+  width: 450px;
+  text-align: left;
   z-index: 10;
 }
 
@@ -115,10 +112,7 @@ dialog::backdrop {
 
 .form-controller {
   margin-bottom: 16px;
-}
-
-.form-controller div:last-child {
-  margin-left: 20px;
+  flex-direction: column;
 }
 
 .form-footer button:last-of-type {
