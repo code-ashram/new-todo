@@ -79,7 +79,6 @@
 
 .search-wrapper {
   display: flex;
-  margin-left: 12px;
 }
 
 .priority {
@@ -127,4 +126,16 @@ dialog::backdrop {
 
 .todoListItem__date {
   width: 240px;
+}
+
+.sortNameButton {
+  padding: 3px;
+  width: 60px;
+  height: 38px;
+  background-color: transparent;
+  border: 1px solid #495057;
+}
+
+.todoSorter *:not(:first-child) {
+  margin-left: 12px;
 }

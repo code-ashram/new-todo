@@ -12,6 +12,7 @@ import TodoForm from '../TodoForm'
 import { ACTION_TYPE } from '../../store/TodoReducer.ts'
 import TodoContext from '../../store/TodoContext.ts'
 import TodoTask from '../../models/TodoTask.ts'
+import SortNameButton from './parts/SortNameButton.tsx'
 
 const SearchFilter: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -135,7 +136,9 @@ const SearchFilter: FC = () => {
           Add
         </button>
 
-        <div className="d-flex">
+        <div className="todoSorter d-flex">
+          <SortNameButton/>
+
           <select className="form-select filterSelect" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
 
@@ -146,7 +149,7 @@ const SearchFilter: FC = () => {
 
           <div className="search-wrapper">
             <input
-              className="form-control me-2 searchInput"
+              className="form-control searchInput"
               ref={inputRef}
               name="search"
               type="search"

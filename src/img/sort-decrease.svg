@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    id="svg1"
+    sodipodi:docname="sort_decrease.svg"
+    viewBox="0 0 60 60"
+    sodipodi:version="0.32"
+    version="1.0"
+    y="0"
+    x="0"
+    inkscape:version="0.38.1"
+    sodipodi:docbase="/home/danny/flat/scalable/actions"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-width="1016"
+      pagecolor="#ffffff"
+      inkscape:zoom="2.4559706"
+      inkscape:window-x="0"
+      borderopacity="1.0"
+      inkscape:cx="33.307937"
+      inkscape:cy="23.184728"
+      inkscape:window-y="0"
+      inkscape:window-height="685"
+      inkscape:pageopacity="0.0"
+  />
+  <path
+      id="path850"
+      style="stroke-linejoin:round;stroke:grey;stroke-linecap:round;stroke-width:5;fill:none"
+      d="m43.907 15.071v39.948"
+      sodipodi:stroke-cmyk="(0.0000000 0.0000000 0.0000000 0.80000001)"
+  />
+  <path
+      id="path838"
+      style="stroke-width:1pt;fill:#fff"
+      transform="matrix(2.7241 0 0 2.7241 -2.5857 16.171)"
+      d="m3.8743 13.068l1.875-5.0974c0.168-0.4493 0.3066-0.7813 0.416-0.9961 0.1094-0.2188 0.2598-0.4024 0.4512-0.5508 0.1914-0.1524 0.4414-0.2285 0.75-0.2285 0.3164 0 0.5723 0.0761 0.7676 0.2285 0.1992 0.1523 0.3554 0.3437 0.4687 0.5742 0.1172 0.2266 0.2539 0.5508 0.4102 0.9727l1.869 5.0974c0.117 0.309 0.193 0.547 0.229 0.715 0.039 0.164 0.058 0.33 0.058 0.498 0 0.242-0.086 0.438-0.258 0.586-0.168 0.145-0.392 0.217-0.673 0.217-0.196 0-0.3598-0.039-0.4926-0.117s-0.2402-0.188-0.3223-0.328c-0.0781-0.141-0.1484-0.313-0.2109-0.516l-0.2344-0.768h-3.1933l-0.2403 0.768c-0.1015 0.316-0.2246 0.557-0.3691 0.721-0.1406 0.16-0.3574 0.24-0.6504 0.24-0.2773 0-0.5039-0.072-0.6797-0.217-0.1719-0.148-0.2578-0.344-0.2578-0.586 0-0.144 0.0156-0.295 0.0469-0.451 0.0351-0.16 0.1152-0.414 0.2402-0.762zm4.5234-1.535l-0.9726-3.1581h-0.0234l-1.043 3.1581h2.039z"
+  />
+  <path
+      id="path837"
+      style="stroke-width:1pt;fill:#7f7f7f"
+      transform="matrix(2.7241 0 0 2.7241 -32.817 -88.128)"
+      d="m17.494 40.903h3.164c0.332 0 0.586 0.082 0.762 0.246 0.18 0.16 0.27 0.381 0.27 0.662s-0.088 0.504-0.264 0.668-0.432 0.246-0.768 0.246h-4.306c-0.489 0-0.84-0.092-1.055-0.275-0.211-0.188-0.316-0.455-0.316-0.803 0-0.148 0.023-0.275 0.07-0.381 0.047-0.109 0.145-0.271 0.293-0.486l3.674-4.945h-2.871c-0.328 0-0.582-0.079-0.762-0.235s-0.27-0.365-0.27-0.627c0-0.172 0.04-0.324 0.118-0.457s0.195-0.236 0.351-0.31c0.16-0.075 0.348-0.112 0.563-0.112h4.177c0.313 0 0.559 0.055 0.739 0.164 0.179 0.106 0.299 0.233 0.357 0.381 0.063 0.145 0.094 0.291 0.094 0.44 0 0.125-0.035 0.265-0.106 0.422-0.07 0.156-0.166 0.322-0.287 0.498-0.121 0.175-0.295 0.418-0.521 0.726l-3.106 4.178z"
+  />
+  <path
+      id="path869"
+      sodipodi:nodetypes="cccc"
+      style="stroke-linejoin:round;fill-rule:evenodd;stroke:grey;stroke-linecap:round;stroke-width:3.712;fill:#fff"
+      d="m34.11 19.371l9.281-12.919 10.313 12.61-19.594 0.309z"
+  />
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >ftsort decrease</dc:title
+        >
+        <dc:date
+          >2011-01-31T02:06:47</dc:date
+        >
+        <dc:description
+          >Originally uploaded by Danny Allen for OCAL 0.18 this icon is part of the flat theme</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/114379/ftsort-decrease-by-anonymous</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >Anonymous</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >flat</rdf:li
+            >
+            <rdf:li
+              >icon</rdf:li
+            >
+            <rdf:li
+              >theme</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
