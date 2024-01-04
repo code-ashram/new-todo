@@ -1,19 +1,23 @@
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 
 import TodoTask from '../../../models/TodoTask.ts'
 import { setPriorityImg } from '../../../utils/utils.ts'
 import threeDots from '../../../img/three-dots.svg'
 import TodoForm from '../../TodoForm'
+import { ACTION_TYPE } from '../../../store/TodoReducer.ts'
+import TodoContext from '../../../store/TodoContext.ts'
 
 type Props = {
   todo: TodoTask,
   handleChangeStatus: (id: string) => void,
   onDelete: (id: string) => void,
+  onEdit: (id: string) => void,
 }
 
 const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [showForm, setShowForm] = useState<boolean>(false)
+  const { dispatch: dispatchTodo } = useContext(TodoContext)
 
   const handleToggleControl = () => {
     setIsVisible(prevVisible => (!prevVisible))
@@ -27,10 +31,19 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
     setShowForm(prevForm => (!prevForm))
   }
 
+  const handleUpdateTask = (todo: TodoTask) => {
+    dispatchTodo({
+      type: ACTION_TYPE.UPDATE,
+      payload: todo
+    })
+
+    setShowForm(prevShow => !prevShow)
+  }
+
   return (
     <>
       {showForm &&
-        <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={() => console.log(todo)} todo={todo} />}
+        <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={handleUpdateTask} todo={todo} />}
 
       <li className="todoListItem list-group-item">
         <div className="todoListItem__title">

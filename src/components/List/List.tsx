@@ -51,22 +51,26 @@ const List = () => {
 
   const handleEditTask = (id: string) => {
     dispatch({
-      type: ACTION_TYPE.EDIT,
+      type: ACTION_TYPE.UPDATE,
       payload: { id }
     })
   }
 
   return (
     <ul className="list-group">
-      {sortListByDate(filteredTodoList).map((todo) => (
-        <ListItem
-          key={todo.id}
-          todo={todo}
-          handleChangeStatus={toggleStatusTask}
-          onDelete={handleDeleteTask}
-          onEdit={handleEditTask}
-        />
-      ))}
+      {
+        filteredTodoList.length
+        ? sortListByDate(filteredTodoList).map((todo) => (
+          <ListItem
+            key={todo.id}
+            todo={todo}
+            handleChangeStatus={toggleStatusTask}
+            onDelete={handleDeleteTask}
+            onEdit={handleEditTask}
+          />
+        ))
+        : <li className="todoListItemEmpty list-group-item text-center">Nothing to show =(</li>
+      }
     </ul>
   )
 }

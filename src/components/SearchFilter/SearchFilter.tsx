@@ -21,6 +21,10 @@ const SearchFilter: FC = () => {
   const { dispatch: dispatchPeriod } = useContext(PeriodContext)
   const [showForm, setShowForm] = useState<boolean>(false)
 
+  const handleToggleForm = () => {
+    setShowForm(prevShow => !prevShow)
+  }
+
   const handleCreateTask = (todo: TodoTask) => {
     dispatchTodo({
       type: ACTION_TYPE.CREATE,
@@ -30,6 +34,8 @@ const SearchFilter: FC = () => {
         isDone: todo.isDone
       }
     })
+
+    handleToggleForm()
   }
 
   const handleChangePeriod = (period: PERIOD) => {
@@ -72,7 +78,7 @@ const SearchFilter: FC = () => {
 
   return (
     <>
-      <TodoForm isOpen={showForm} onClose={() => setShowForm(false)} onSubmit={handleCreateTask} />
+      <TodoForm isOpen={showForm} onClose={handleToggleForm} onSubmit={handleCreateTask} />
 
       <ul className="nav nav-tabs d-flex justify-content-between" id="myTab" role="tablist">
         <div className="tabWrapper d-flex">
