@@ -14,13 +14,11 @@ export type EditDeleteAction = {
   }
 }
 
+
+
 export type CreateAction = {
   type: ACTION_TYPE
-  payload: {
-    title: string,
-    isDone: boolean,
-    priority: string
-  }
+  payload: Omit<TodoTask, 'id' | 'creationTime'>
 }
 
 export type UpdateAction = {
@@ -28,14 +26,14 @@ export type UpdateAction = {
   payload: TodoTask
 }
 
-export type Action = EditDeleteAction | CreateAction
+export type Action = EditDeleteAction | CreateAction | UpdateAction
 
-const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
-  switch (action.type) {
+const todoReducer = (state: TodoTask[], { type, payload }: Action): TodoTask[] => {
+  switch (type) {
     case ACTION_TYPE.DELETE:
-      return state.filter((todo) => todo.id !== (action as EditDeleteAction).payload.id)
+      return state.filter((todo) => todo.id !== (payload as Pick<TodoTask, 'id'>).id)
     case ACTION_TYPE.CHANGE_STATUS:
-      return state.map((todo) => todo.id === (action as EditDeleteAction).payload.id
+      return state.map((todo) => todo.id === (payload as Pick<TodoTask, 'id'>).id
         ? {
           ...todo,
           isDone: !todo.isDone
@@ -46,16 +44,16 @@ const todoReducer = (state: TodoTask[], action: Action): TodoTask[] => {
       return [
         {
           id: crypto.randomUUID(),
-          isDone: (action as CreateAction).payload.isDone,
-          title: (action as CreateAction).payload.title.trim(),
+          isDone: (payload as Omit<TodoTask, 'id' | 'creationTime'>).isDone,
+          title: (payload as Omit<TodoTask, 'id' | 'creationTime'>).title.trim(),
           creationTime: new Date().toISOString(),
-          priority: (action as CreateAction).payload.priority
+          priority: (payload as Omit<TodoTask, 'id' | 'creationTime'>).priority
         },
         ...state
       ]
     case ACTION_TYPE.UPDATE:
-      return state.map((todo) => todo.id === (action as UpdateAction).payload.id
-        ? (action as UpdateAction).payload
+      return state.map((todo) => todo.id === (payload as TodoTask).id
+        ? (payload as TodoTask)
         : todo
       )
     default:
