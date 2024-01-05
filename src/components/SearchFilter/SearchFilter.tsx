@@ -1,6 +1,10 @@
 import { FC, useContext, useRef, useState } from 'react'
 import * as bootstrap from 'bootstrap'
 import search from '../../img/search-ico.svg'
+import sortNumericUpIcon from '../../img/sort-numeric-up.svg'
+import sortNumericDownIcon from '../../img/sort-numeric-down.svg'
+import sortIncreaseTitleIcon from '../../img/sort-increase.svg'
+import sortDecreaseTitleIcon from '../../img/sort-decrease.svg'
 
 import { SEARCH_ACTION_TYPE } from '../../store/SearchReducer.ts'
 import StatusContext, { STATUS } from '../../store/StatusContext.ts'
@@ -12,7 +16,8 @@ import TodoForm from '../TodoForm'
 import { ACTION_TYPE } from '../../store/TodoReducer.ts'
 import TodoContext from '../../store/TodoContext.ts'
 import TodoTask from '../../models/TodoTask.ts'
-import SortNameButton from './parts/SortNameButton.tsx'
+import SortButton from './parts/SortButton.tsx'
+
 
 const SearchFilter: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -137,7 +142,9 @@ const SearchFilter: FC = () => {
         </button>
 
         <div className="todoSorter d-flex">
-          <SortNameButton/>
+          <SortButton prevImage={sortIncreaseTitleIcon} nextImage={sortDecreaseTitleIcon} onClick={() => console.log('Sort By Title')}/>
+
+          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={() => console.log('Sort By Time')}/>
 
           <select className="form-select filterSelect" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>

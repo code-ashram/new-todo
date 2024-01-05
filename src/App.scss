@@ -136,6 +136,11 @@ dialog::backdrop {
   border: 1px solid #495057;
 }
 
+.sortNameButton img {
+  width: 34px;
+  height: 28px;
+}
+
 .todoSorter *:not(:first-child) {
   margin-left: 12px;
 }

@@ -5,7 +5,6 @@ import TodoContext from '../../store/TodoContext.ts'
 import SearchContext from '../../store/SearchContext.ts'
 import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
 import { STATUS, StatusContext } from '../../store/StatusContext.ts'
-import { sortListByDate } from '../../utils/utils.ts'
 
 const List = () => {
   const { tasks, dispatch } = useContext(TodoContext)
@@ -60,7 +59,7 @@ const List = () => {
     <ul className="list-group">
       {
         filteredTodoList.length
-        ? sortListByDate(filteredTodoList).map((todo) => (
+        ? filteredTodoList.map((todo) => (
           <ListItem
             key={todo.id}
             todo={todo}

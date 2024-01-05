@@ -14,8 +14,6 @@ export type EditDeleteAction = {
   }
 }
 
-
-
 export type CreateAction = {
   type: ACTION_TYPE
   payload: Omit<TodoTask, 'id' | 'creationTime'>
