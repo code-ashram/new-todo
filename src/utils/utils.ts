@@ -17,13 +17,34 @@ export const sortListByFirstDate = (list: TodoTask[]): TodoTask[] =>
       : 1
   )
 
-export enum PRIORITY  {
-  HIGH = "High",
-  MID = "Mid",
-  LOW = "Low"
+export const sortListByAscendingTitle = (list: TodoTask[]): TodoTask[] =>
+  list.sort((a: TodoTask, b: TodoTask) =>
+    a.title.toLowerCase() < b.title.toLowerCase()
+      ? 1
+      : -1
+  )
+
+export const sortListByDescendingTitle = (list: TodoTask[]): TodoTask[] =>
+  list.sort((a: TodoTask, b: TodoTask) =>
+    a.title.toLowerCase() < b.title.toLowerCase()
+      ? -1
+      : 1
+  )
+
+export enum SORTING_ORDER {
+  DATE_ASCENDING = 'dateAscending',
+  DATE_DESCENDING = 'dateDescending',
+  TITLE_ASCENDING = 'titleAscending',
+  TITLE_DESCENDING = 'titleDescending',
 }
 
-export const setPriorityImg = (priority: string):string => {
+export enum PRIORITY {
+  HIGH = 'High',
+  MID = 'Mid',
+  LOW = 'Low'
+}
+
+export const setPriorityImg = (priority: string): string => {
   let priorityImg: string
 
   switch (priority) {
@@ -37,7 +58,7 @@ export const setPriorityImg = (priority: string):string => {
       priorityImg = lowPriorityIco
       break
     default:
-      priorityImg = ""
+      priorityImg = ''
   }
 
   return priorityImg
