@@ -18,12 +18,8 @@ import TodoContext from '../../store/TodoContext.ts'
 import TodoTask from '../../models/TodoTask.ts'
 import SortButton from './parts/SortButton.tsx'
 
-type Props = {
-  onOrderByTitle: () => void
-  onOrderByDate: () => void
-}
 
-const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
+const SearchFilter: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const { dispatch: dispatchTodo } = useContext(TodoContext)
   const { dispatch: dispatchSearch } = useContext(SearchContext)
@@ -146,9 +142,9 @@ const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
         </button>
 
         <div className="todoSorter d-flex">
-          <SortButton prevImage={sortIncreaseTitleIcon} nextImage={sortDecreaseTitleIcon} onClick={onOrderByTitle}/>
+          <SortButton prevImage={sortIncreaseTitleIcon} nextImage={sortDecreaseTitleIcon} onClick={() => console.log('Sort By Title')}/>
 
-          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={onOrderByDate}/>
+          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={() => console.log('Sort By Time')}/>
 
           <select className="form-select filterSelect" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
