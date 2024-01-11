@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
 
 import SearchFilter from './components/SearchFilter'
 import List from './components/List'
@@ -11,6 +11,7 @@ import SearchContext from './store/SearchContext.ts'
 import FilterContext, { STATUS } from './store/StatusContext.ts'
 import PeriodContext, { PERIOD } from './store/PeriodContext.ts'
 import mockData from './models/mockData.ts'
+import { SORTING_ORDER } from './utils/utils.ts'
 
 import './App.scss'
 
@@ -19,6 +20,19 @@ const App = () => {
   const [search, dispatchSearch] = useReducer(searchReducer, '')
   const [status, dispatchStatus] = useReducer(statusReducer, STATUS.ALL)
   const [period, dispatchPeriod] = useReducer(periodReducer, PERIOD.ALL_TIME)
+  const [orderDirection, setOrderDirection] =
+    useState<SORTING_ORDER>(SORTING_ORDER.DATE_DESCENDING)
+  const [orderMode, setOrderMode] = useState<boolean>(true)
+
+  const handleToggleOrderByDate = () => {
+    setOrderMode(prevOrderMode => !prevOrderMode)
+    setOrderDirection(orderMode ? SORTING_ORDER.DATE_ASCENDING : SORTING_ORDER.DATE_DESCENDING)
+  }
+
+  const handleToggleOrderByTitle = () => {
+    setOrderMode(prevOrderMode => !prevOrderMode)
+    setOrderDirection(orderMode ? SORTING_ORDER.TITLE_ASCENDING : SORTING_ORDER.TITLE_DESCENDING)
+  }
 
   return (
     <div className="card">
@@ -27,8 +41,9 @@ const App = () => {
           <FilterContext.Provider value={{ status, dispatch: dispatchStatus }}>
             <SearchContext.Provider value={{ search, dispatch: dispatchSearch }}>
               <PeriodContext.Provider value={{ period, dispatch: dispatchPeriod }}>
-                <SearchFilter />
-                <List />
+                <SearchFilter onOrderByDate={handleToggleOrderByDate} onOrderByTitle={handleToggleOrderByTitle} />
+
+                <List orderBy={tasks} orderDirection={orderDirection}/>
               </PeriodContext.Provider>
             </SearchContext.Provider>
           </FilterContext.Provider>
