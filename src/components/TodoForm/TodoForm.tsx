@@ -103,15 +103,19 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
 
         <div className="form-footer">
           <button
+            type="submit"
             className="btn btn-primary"
             disabled={!isValid}
-            type="submit">{task ? 'Save' : 'Add'}
+          >
+            {task ? 'Save' : 'Add'}
           </button>
 
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={onClose}>Cancel
+            onClick={onClose}
+          >
+            Cancel
           </button>
         </div>
       </form>

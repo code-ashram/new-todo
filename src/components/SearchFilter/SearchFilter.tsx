@@ -1,4 +1,4 @@
-import { FC, useContext, useRef, useState } from 'react'
+import { FC, useContext, useEffect, useRef, useState } from 'react'
 
 import * as bootstrap from 'bootstrap'
 
@@ -35,6 +35,9 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
   const { dispatch: dispatchPeriod } = useContext(PeriodContext)
   const [showForm, setShowForm] = useState<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const allTasksButtonRef = useRef<HTMLButtonElement>(null)
+  const uncompletedTasksButtonRef = useRef<HTMLButtonElement>(null)
+  const completedTasksButtonRef = useRef<HTMLButtonElement>(null)
 
   const handleToggleForm = () => {
     setShowForm(prevShow => !prevShow)
@@ -80,16 +83,27 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
     })
   }
 
-  const triggerTabList = document.querySelectorAll('#myTab button')
+  useEffect(() => {
+    const triggerTabList = [
+      allTasksButtonRef.current,
+      uncompletedTasksButtonRef.current,
+      completedTasksButtonRef.current
+    ]
 
-  triggerTabList.forEach(triggerEl => {
-    const tabTrigger = new bootstrap.Tab(triggerEl)
-
-    triggerEl.addEventListener('click', event => {
+    const handleClickTabBtn = (event: MouseEvent, element: HTMLButtonElement) => {
       event.preventDefault()
+      const tabTrigger = new bootstrap.Tab(element)
       tabTrigger.show()
+    }
+
+    triggerTabList.forEach(triggerEl => {
+      triggerEl?.addEventListener('click', event => handleClickTabBtn(event, triggerEl))
     })
-  })
+
+    return () => triggerTabList.forEach(triggerEl =>
+      triggerEl?.removeEventListener('click', event => handleClickTabBtn(event, triggerEl))
+    )
+  }, [allTasksButtonRef, completedTasksButtonRef, uncompletedTasksButtonRef])
 
   return (
     <>
@@ -99,6 +113,7 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
         <div className="tabWrapper d-flex">
           <li className="nav-item" role="presentation">
             <button
+              ref={allTasksButtonRef}
               type="button"
               id="home-tab"
               className="nav-link tab-btn active"
@@ -115,6 +130,7 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
 
           <li className="nav-item" role="presentation">
             <button
+              ref={uncompletedTasksButtonRef}
               type="button"
               id="profile-tab"
               className="nav-link tab-btn"
@@ -131,6 +147,7 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
 
           <li className="nav-item" role="presentation">
             <button
+              ref={completedTasksButtonRef}
               type="button"
               id="contact-tab"
               className="nav-link tab-btn"
