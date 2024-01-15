@@ -1,4 +1,4 @@
-type TodoTask = {
+type Todo = {
   id: string,
   title: string,
   isDone: boolean,
@@ -6,4 +6,4 @@ type TodoTask = {
   priority: string,
 }
 
-export default TodoTask
+export default Todo

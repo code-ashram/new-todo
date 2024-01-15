@@ -1,10 +1,12 @@
 import { createContext, Dispatch } from 'react'
-import TodoTask from '../models/TodoTask.ts'
+
 import { Action } from './TodoReducer.ts'
+
+import Todo from '../models/Todo.ts'
 import mockData from '../models/mockData.ts'
 
 type ContextType = {
-  tasks: TodoTask[],
+  tasks: Todo[],
   dispatch: Dispatch<Action>
 }
 

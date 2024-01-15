@@ -24,8 +24,8 @@
 }
 
 .todoListItemDate {
-  width: 235px;
   margin-bottom: 0;
+  width: 235px;
 }
 
 .todoListItemControl p {
@@ -52,13 +52,13 @@
 }
 
 .todoListItemDetails {
-  text-align: center;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 30px;
+  text-align: center;
+  border: none;
   border-radius: 50%;
-  border: none
 }
 
 .btn-warning {
@@ -132,8 +132,8 @@ dialog::backdrop {
   padding: 3px;
   width: 60px;
   height: 38px;
-  background-color: transparent;
   border: 1px solid #495057;
+  background-color: transparent;
 }
 
 .sortNameButton img {

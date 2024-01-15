@@ -1,16 +1,18 @@
 import { FC, FormEvent, useMemo, useState } from 'react'
-import TodoTask from '../../models/TodoTask.ts'
-import { PRIORITY } from '../../utils/utils.ts'
+
+import Todo from '../../models/Todo.ts'
+
+import { PRIORITY } from '../../utils'
 
 type Props = {
   isOpen: boolean,
   onClose: () => void,
-  onSubmit: (todo: TodoTask) => void,
-  todo?: TodoTask
+  onSubmit: (todo: Todo) => void,
+  todo?: Todo
 }
 
 const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
-  const [todo, setTodo] = useState<TodoTask>(task ||
+  const [todo, setTodo] = useState<Todo>(task ||
     {
       id: crypto.randomUUID(),
       title: '',
@@ -20,7 +22,7 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
     })
   const isValid: boolean = useMemo(() => Boolean(todo.title), [todo.title])
 
-  const handleChangeTodo = (payload: Partial<TodoTask>): void => {
+  const handleChangeTodo = (payload: Partial<Todo>): void => {
     setTodo(prevTodo => ({ ...prevTodo, ...payload }))
   }
 
@@ -45,14 +47,14 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
             <label className="form-tip" htmlFor="todoInput">Title:</label>
 
             <input
+              type="text"
+              id="todoInput"
               className="form-control"
               value={todo.title}
-              onChange={(e) => handleChangeTodo({ title: e.target.value })}
-              id="todoInput"
-              type="text"
               placeholder={task ? 'Title' : 'Add new task'}
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
+              onChange={(e) => handleChangeTodo({ title: e.target.value })}
             />
           </div>
 
@@ -61,11 +63,15 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
               <label className="form-tip" htmlFor="priority">Priority:</label>
 
               <select
-                className="form-select"
                 id="priority"
-                aria-label="Default select example"
+                className="form-select"
                 value={todo.priority}
-                onChange={(e) => handleChangeTodo({ priority: e.target.value })}
+                aria-label="Default select example"
+                onChange={(e) =>
+                  handleChangeTodo(
+                    { priority: e.target.value }
+                  )
+                }
               >
                 <option value={PRIORITY.HIGH}>High</option>
 
@@ -82,10 +88,10 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
                 </label>
 
                 <input
-                  className="form-check-input"
                   type="checkbox"
-                  name="isDone"
                   id="isDone2"
+                  className="form-check-input"
+                  name="isDone"
                   role="switch"
                   checked={todo.isDone}
                   onChange={() => handleChangeTodo({ isDone: !todo.isDone })}
@@ -96,9 +102,17 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
         </div>
 
         <div className="form-footer">
-          <button disabled={!isValid} className="btn btn-primary" type="submit">{task ? 'Save' : 'Add'}</button>
+          <button
+            className="btn btn-primary"
+            disabled={!isValid}
+            type="submit">{task ? 'Save' : 'Add'}
+          </button>
 
-          <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={onClose}>Cancel
+          </button>
         </div>
       </form>
     </dialog>

@@ -1,4 +1,4 @@
-import TodoTask from '../models/TodoTask.ts'
+import Todo from '../models/Todo.ts'
 
 export const enum ACTION_TYPE {
   CHANGE_STATUS,
@@ -16,22 +16,22 @@ export type EditDeleteAction = {
 
 export type CreateAction = {
   type: ACTION_TYPE
-  payload: Omit<TodoTask, 'id' | 'creationTime'>
+  payload: Omit<Todo, 'id' | 'creationTime'>
 }
 
 export type UpdateAction = {
   type: ACTION_TYPE
-  payload: TodoTask
+  payload: Todo
 }
 
 export type Action = EditDeleteAction | CreateAction | UpdateAction
 
-const todoReducer = (state: TodoTask[], { type, payload }: Action): TodoTask[] => {
+const todoReducer = (state: Todo[], { type, payload }: Action): Todo[] => {
   switch (type) {
     case ACTION_TYPE.DELETE:
-      return state.filter((todo) => todo.id !== (payload as Pick<TodoTask, 'id'>).id)
+      return state.filter((todo) => todo.id !== (payload as Pick<Todo, 'id'>).id)
     case ACTION_TYPE.CHANGE_STATUS:
-      return state.map((todo) => todo.id === (payload as Pick<TodoTask, 'id'>).id
+      return state.map((todo) => todo.id === (payload as Pick<Todo, 'id'>).id
         ? {
           ...todo,
           isDone: !todo.isDone
@@ -42,16 +42,16 @@ const todoReducer = (state: TodoTask[], { type, payload }: Action): TodoTask[] =
       return [
         {
           id: crypto.randomUUID(),
-          isDone: (payload as Omit<TodoTask, 'id' | 'creationTime'>).isDone,
-          title: (payload as Omit<TodoTask, 'id' | 'creationTime'>).title.trim(),
+          isDone: (payload as Omit<Todo, 'id' | 'creationTime'>).isDone,
+          title: (payload as Omit<Todo, 'id' | 'creationTime'>).title.trim(),
           creationTime: new Date().toISOString(),
-          priority: (payload as Omit<TodoTask, 'id' | 'creationTime'>).priority
+          priority: (payload as Omit<Todo, 'id' | 'creationTime'>).priority
         },
         ...state
       ]
     case ACTION_TYPE.UPDATE:
-      return state.map((todo) => todo.id === (payload as TodoTask).id
-        ? (payload as TodoTask)
+      return state.map((todo) => todo.id === (payload as Todo).id
+        ? (payload as Todo)
         : todo
       )
     default:

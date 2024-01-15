@@ -1,14 +1,19 @@
 import { FC, useContext, useState } from 'react'
 
-import TodoTask from '../../../models/TodoTask.ts'
-import { setPriorityImg } from '../../../utils/utils.ts'
-import threeDots from '../../../img/three-dots.svg'
 import TodoForm from '../../TodoForm'
-import { ACTION_TYPE } from '../../../store/TodoReducer.ts'
+
 import TodoContext from '../../../store/TodoContext.ts'
 
+import { ACTION_TYPE } from '../../../store/TodoReducer.ts'
+
+import { setPriorityImg } from '../../../utils'
+
+import Todo from '../../../models/Todo.ts'
+
+import threeDots from '../../../img/three-dots.svg'
+
 type Props = {
-  todo: TodoTask,
+  todo: Todo,
   handleChangeStatus: (id: string) => void,
   onDelete: (id: string) => void,
   onEdit: (id: string) => void,
@@ -31,7 +36,7 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
     setShowForm(prevForm => (!prevForm))
   }
 
-  const handleUpdateTask = (todo: TodoTask) => {
+  const handleUpdateTask = (todo: Todo) => {
     dispatchTodo({
       type: ACTION_TYPE.UPDATE,
       payload: todo
@@ -47,10 +52,12 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
 
       <li className="todoListItem list-group-item">
         <div className="todoListItem__title">
-          <input className="form-check-input me-1"
-                 type="checkbox" checked={todo.isDone}
-                 id={todo.id}
-                 onChange={() => handleChangeStatus(todo.id)} />
+          <input
+            type="checkbox"
+            id={todo.id}
+            className="form-check-input me-1"
+            checked={todo.isDone}
+            onChange={() => handleChangeStatus(todo.id)} />
           <label className="form-check-label" htmlFor={todo.id}>{todo.title}</label>
         </div>
 
@@ -72,8 +79,8 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
 
           <div className="todoListItemControlWrap" onMouseLeave={handleClosePopup}>
             <button
-              className="btn btn-outline-secondary todoListItemDetails"
               type="button"
+              className="btn btn-outline-secondary todoListItemDetails"
               onClick={handleToggleControl}>
               <img src={threeDots} alt="threeDots" />
             </button>
@@ -81,16 +88,16 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
             {isVisible &&
               <div className="list-group todoListItemControlButtons">
                 <button
-                  className="list-group-item list-group-item-action"
                   type="button"
+                  className="list-group-item list-group-item-action"
                   aria-current="true"
                   onClick={handleShowForm}>
                   Edit
                 </button>
 
                 <button
-                  className="list-group-item list-group-item-action"
                   type="button"
+                  className="list-group-item list-group-item-action"
                   onClick={() => onDelete(todo.id)}>
                   Delete
                 </button>

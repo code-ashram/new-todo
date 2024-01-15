@@ -1,4 +1,5 @@
 import { createContext, Dispatch } from 'react'
+
 import { SearchAction } from './SearchReducer.ts'
 
 type ContextType = {
@@ -7,7 +8,7 @@ type ContextType = {
 }
 
 const initialValue = {
-  search: "",
+  search: '',
   dispatch: () => {}
 }
 

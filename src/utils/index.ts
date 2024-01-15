@@ -1,31 +1,32 @@
-import TodoTask from '../models/TodoTask.ts'
+import Todo from '../models/Todo.ts'
+
 import highPriorityIco from '../img/high-priority.svg'
 import midPriorityIco from '../img/medium-priority.svg'
 import lowPriorityIco from '../img/low-priority.svg'
 
-export const sortListByLastDate = (list: TodoTask[]): TodoTask[] =>
-  list.sort((a: TodoTask, b: TodoTask) =>
+export const sortListByLastDate = (list: Todo[]): Todo[] =>
+  list.sort((a: Todo, b: Todo) =>
     new Date(a.creationTime) < new Date(b.creationTime)
       ? 1
       : -1
   )
 
-export const sortListByFirstDate = (list: TodoTask[]): TodoTask[] =>
-  list.sort((a: TodoTask, b: TodoTask) =>
+export const sortListByFirstDate = (list: Todo[]): Todo[] =>
+  list.sort((a: Todo, b: Todo) =>
     new Date(a.creationTime) < new Date(b.creationTime)
       ? -1
       : 1
   )
 
-export const sortListByAscendingTitle = (list: TodoTask[]): TodoTask[] =>
-  list.sort((a: TodoTask, b: TodoTask) =>
+export const sortListByAscendingTitle = (list: Todo[]): Todo[] =>
+  list.sort((a: Todo, b: Todo) =>
     a.title.toLowerCase() < b.title.toLowerCase()
       ? 1
       : -1
   )
 
-export const sortListByDescendingTitle = (list: TodoTask[]): TodoTask[] =>
-  list.sort((a: TodoTask, b: TodoTask) =>
+export const sortListByDescendingTitle = (list: Todo[]): Todo[] =>
+  list.sort((a: Todo, b: Todo) =>
     a.title.toLowerCase() < b.title.toLowerCase()
       ? -1
       : 1

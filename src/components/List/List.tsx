@@ -1,22 +1,27 @@
 import { FC, useContext, useMemo } from 'react'
+
 import ListItem from './parts/ListItem.tsx'
-import { ACTION_TYPE } from '../../store/TodoReducer.ts'
+
 import TodoContext from '../../store/TodoContext.ts'
 import SearchContext from '../../store/SearchContext.ts'
 import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
 import { STATUS, StatusContext } from '../../store/StatusContext.ts'
-import TodoTask from '../../models/TodoTask.ts'
+
+import { ACTION_TYPE } from '../../store/TodoReducer.ts'
+
+import Todo from '../../models/Todo.ts'
+
 import {
   SORTING_ORDER,
   sortListByAscendingTitle,
   sortListByDescendingTitle,
   sortListByFirstDate,
   sortListByLastDate
-} from '../../utils/utils.ts'
+} from '../../utils'
 
 type Props = {
   orderDirection: string
-  orderBy: TodoTask[]
+  orderBy: Todo[]
 }
 
 const List: FC<Props> = ({ orderDirection, orderBy }) => {

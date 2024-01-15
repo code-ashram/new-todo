@@ -1,41 +1,46 @@
 import { FC, useContext, useRef, useState } from 'react'
+
 import * as bootstrap from 'bootstrap'
-import search from '../../img/search-ico.svg'
+
+import SortButton from './parts/SortButton.tsx'
+import TodoForm from '../TodoForm'
+
+import TodoContext from '../../store/TodoContext.ts'
+import SearchContext from '../../store/SearchContext.ts'
+import StatusContext, { STATUS } from '../../store/StatusContext.ts'
+import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
+
+import { ACTION_TYPE } from '../../store/TodoReducer.ts'
+import { SEARCH_ACTION_TYPE } from '../../store/SearchReducer.ts'
+import { ACTION_STATUS } from '../../store/StatusReducer.ts'
+import { ACTION_PERIOD } from '../../store/PeriodReducer.ts'
+
+import Todo from '../../models/Todo.ts'
+
 import sortNumericUpIcon from '../../img/sort-numeric-up.svg'
 import sortNumericDownIcon from '../../img/sort-numeric-down.svg'
 import sortIncreaseTitleIcon from '../../img/sort-increase.svg'
 import sortDecreaseTitleIcon from '../../img/sort-decrease.svg'
-
-import { SEARCH_ACTION_TYPE } from '../../store/SearchReducer.ts'
-import StatusContext, { STATUS } from '../../store/StatusContext.ts'
-import { ACTION_STATUS } from '../../store/StatusReducer.ts'
-import SearchContext from '../../store/SearchContext.ts'
-import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
-import { ACTION_PERIOD } from '../../store/PeriodReducer.ts'
-import TodoForm from '../TodoForm'
-import { ACTION_TYPE } from '../../store/TodoReducer.ts'
-import TodoContext from '../../store/TodoContext.ts'
-import TodoTask from '../../models/TodoTask.ts'
-import SortButton from './parts/SortButton.tsx'
+import search from '../../img/search-ico.svg'
 
 type Props = {
   onOrderByTitle: () => void
   onOrderByDate: () => void
 }
 
-const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
   const { dispatch: dispatchTodo } = useContext(TodoContext)
   const { dispatch: dispatchSearch } = useContext(SearchContext)
   const { dispatch: dispatchStatus } = useContext(StatusContext)
   const { dispatch: dispatchPeriod } = useContext(PeriodContext)
   const [showForm, setShowForm] = useState<boolean>(false)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const handleToggleForm = () => {
     setShowForm(prevShow => !prevShow)
   }
 
-  const handleCreateTask = (todo: TodoTask) => {
+  const handleCreateTask = (todo: Todo) => {
     dispatchTodo({
       type: ACTION_TYPE.CREATE,
       payload: {
@@ -94,14 +99,14 @@ const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
         <div className="tabWrapper d-flex">
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link tab-btn active"
-              id="home-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#home-tab-pane"
               type="button"
+              id="home-tab"
+              className="nav-link tab-btn active"
               role="tab"
               aria-controls="home-tab-pane"
               aria-selected="true"
+              data-bs-toggle="tab"
+              data-bs-target="#home-tab-pane"
               onClick={() => handleChangeStatus(STATUS.ALL)}
             >
               All tasks
@@ -110,14 +115,14 @@ const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
 
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link tab-btn"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
               type="button"
+              id="profile-tab"
+              className="nav-link tab-btn"
               role="tab"
               aria-controls="profile-tab-pane"
               aria-selected="false"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
               onClick={() => handleChangeStatus(STATUS.ACTIVE)}
             >
               Uncompleted
@@ -126,14 +131,14 @@ const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
 
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link tab-btn"
-              id="contact-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#contact-tab-pane"
               type="button"
+              id="contact-tab"
+              className="nav-link tab-btn"
               role="tab"
               aria-controls="contact-tab-pane"
               aria-selected="false"
+              data-bs-toggle="tab"
+              data-bs-target="#contact-tab-pane"
               onClick={() => handleChangeStatus(STATUS.COMPLETED)}
             >
               Completed
@@ -146,9 +151,9 @@ const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
         </button>
 
         <div className="todoSorter d-flex">
-          <SortButton prevImage={sortIncreaseTitleIcon} nextImage={sortDecreaseTitleIcon} onClick={onOrderByTitle}/>
+          <SortButton prevImage={sortIncreaseTitleIcon} nextImage={sortDecreaseTitleIcon} onClick={onOrderByTitle} />
 
-          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={onOrderByDate}/>
+          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={onOrderByDate} />
 
           <select className="form-select filterSelect" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
@@ -160,10 +165,10 @@ const SearchFilter: FC<Props> = ({onOrderByTitle, onOrderByDate}) => {
 
           <div className="search-wrapper">
             <input
-              className="form-control searchInput"
               ref={inputRef}
-              name="search"
               type="search"
+              name="search"
+              className="form-control searchInput"
               placeholder="Search..."
               aria-label="search"
               onChange={handleSearchTask}
