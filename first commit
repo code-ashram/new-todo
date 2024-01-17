@@ -1,0 +1,227 @@
+[33mcommit 6a0fdc286d06688ed236e788c188e5bc2b5be89f[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Jan 11 11:55:27 2024 +0300
+
+    back to penult commit
+
+[33mcommit f943d20885d2d5635cb0c845b206eb303f844d86[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Wed Jan 10 17:09:53 2024 +0300
+
+    add filtering by order
+
+[33mcommit a22ef17b87f2a42df042ce772d8d67ed9810976c[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Fri Jan 5 20:58:10 2024 +0300
+
+    add another one icon
+
+[33mcommit 1385be0d99ed5363577b5383c13b756234a08529[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Jan 4 23:13:56 2024 +0300
+
+    fix typisation in todo-reducer
+
+[33mcommit e6db9e97176abfcd6f3d9da5f622a5799c446c52[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Jan 4 19:04:34 2024 +0300
+
+    add button for sorting
+
+[33mcommit 5b34766204c7ea57caf80f45cad01fe35fcb1ff4[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Jan 4 18:01:00 2024 +0300
+
+    add todo editor
+
+[33mcommit 0054249940ef1f2ecb0deb8acaa622b293c18c92[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Fri Dec 29 16:06:29 2023 +0300
+
+    fix markup for form
+
+[33mcommit 28d92e6c8642499379326d232d542a388145cbec[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Wed Dec 27 22:43:07 2023 +0300
+
+    add edit form
+
+[33mcommit b24c4d9f01dd90955f8fa689a7802d6f119c23b5[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Tue Dec 26 22:00:35 2023 +0300
+
+    add edit action
+
+[33mcommit 9977acd5effcfb139247b6596c9cade0d67f0f2c[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Dec 24 21:53:40 2023 +0300
+
+    change styles for list-item
+
+[33mcommit cb03bd9b081164c9335670ede3a92d9eb9ddcbfc[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Dec 24 19:59:00 2023 +0300
+
+    add popup to control
+
+[33mcommit 5dc721a625d46df9531204eaa7b4614a0cd7b2d5[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Dec 24 16:46:47 2023 +0300
+
+    change priority to ENUM
+
+[33mcommit d859bb4e909e1ac8ab4be034b9ff030ac6e0c350[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Dec 24 15:21:57 2023 +0300
+
+    add time of creation
+
+[33mcommit 014828560d469c800e4f92cad4adbbc32972851c[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sat Dec 23 22:57:21 2023 +0300
+
+    remake form-component
+
+[33mcommit 0b06f9fe8c1f1b4323ab9bd02d78dfb55191fcd5[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Dec 21 20:58:24 2023 +0300
+
+    minor refactoring
+
+[33mcommit 1b750e50c1e05b457e35f4f5a469c72276d24a92[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Mon Dec 18 16:56:13 2023 +0300
+
+    add some names for elements
+
+[33mcommit b61599eea2ea7a39107e48ab352b878a450369fc[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Mon Dec 18 16:29:21 2023 +0300
+
+    added tasks form improved
+
+[33mcommit 81b1816c3d299f15e6051d2dafe9afc5dd0d6973[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Mon Dec 18 12:36:22 2023 +0300
+
+    add util for priority
+
+[33mcommit 96ab0734e97f2a8fac59c0d358e12dd3a0db913f[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Dec 17 21:35:33 2023 +0300
+
+    add modal form
+
+[33mcommit 5928e2766aad91bb9ee34d029057ad282f844efb[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Dec 17 17:56:43 2023 +0300
+
+    add sorting by period
+
+[33mcommit abd8d1f1d8b6dea60b5782c152661e12badac6b9[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Fri Dec 15 17:55:53 2023 +0300
+
+    add reducer and context in components
+
+[33mcommit c85ed2bb7d6a169811c224a89b785bd41b5b5b68[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Fri Dec 15 15:48:41 2023 +0300
+
+    add select with period
+
+[33mcommit 4339aceb12a3174b3976d51ea40b41bd191961fa[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Dec 14 19:16:06 2023 +0300
+
+    some format fixes
+
+[33mcommit 69b0de829138104f4f1a77d3935ef54da7d7e251[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Mon Dec 11 19:43:54 2023 +0300
+
+    change form to state
+
+[33mcommit aef6eb3b30a65fbc1c2785a22d50835e8c7b989e[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Mon Dec 11 18:20:12 2023 +0300
+
+    add button validation
+
+[33mcommit eb7f8c91451f0ab69884dcd05dbc3ebd57348d73[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sat Dec 9 18:34:38 2023 +0300
+
+    add dates and sort functions for them
+
+[33mcommit 4fb55fae0689e203652ddd145fc6f64be64951bd[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Mon Nov 27 19:17:33 2023 +0300
+
+    add filtration for todos
+
+[33mcommit 2fc1708c80eaefe4fa770821355a5f369b2cfd38[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sun Nov 26 23:33:39 2023 +0300
+
+    add markup for tabs
+
+[33mcommit 908d59b9d77899ae6af27de61c5322b6c702c845[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sat Nov 25 20:09:12 2023 +0300
+
+    add filter for tasks
+
+[33mcommit 10feb95f79dc9fa928ad85811cbd46143596be80[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sat Nov 25 17:25:30 2023 +0300
+
+    try to make a search for todolist
+
+[33mcommit 85dcea80482eb284ced09f296103619f3a587187[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Sat Nov 25 11:53:40 2023 +0300
+
+    add create todo function
+
+[33mcommit 84972db49563ef96595a3e5906e9b143594e2427[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Fri Nov 24 16:54:01 2023 +0300
+
+    try to add not worked context
+
+[33mcommit a2cc64c6ca84f0120e3cdd66637343dbc19a8c60[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Nov 23 21:25:42 2023 +0300
+
+    add files for context
+
+[33mcommit 9ecf944d28517e1e616324366f21a9b84934d337[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Thu Nov 23 21:11:48 2023 +0300
+
+    add toggle done function for tasks
+
+[33mcommit 39d3e14d2d333bdd1c643b47ecfddefab647b41c[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Wed Nov 22 21:30:31 2023 +0300
+
+    add delete function
+
+[33mcommit 6f7f13c0a87e62ab00bb794ad1ec5220d17f510f[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Tue Nov 21 21:02:53 2023 +0300
+
+    add first markup
+
+[33mcommit e8e522cc3933dd8afd6820f6978c1d35ea552add[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Tue Nov 21 19:29:39 2023 +0300
+
+    add bootstrap for styles and markup
+
+[33mcommit 72651c1398f62aa4fcad5ada86143ecc45744026[m
+Author: Andrei Yeutukhou <gavnorock84@hotmail.com>
+Date:   Tue Nov 21 18:57:41 2023 +0300
+
+    first commit
