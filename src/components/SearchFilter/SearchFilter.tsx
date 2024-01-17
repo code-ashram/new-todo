@@ -1,20 +1,16 @@
 import { FC, useContext, useEffect, useRef, useState } from 'react'
-
 import * as bootstrap from 'bootstrap'
 
 import SortButton from './parts/SortButton.tsx'
 import TodoForm from '../TodoForm'
-
 import TodoContext from '../../store/TodoContext.ts'
 import SearchContext from '../../store/SearchContext.ts'
 import StatusContext, { STATUS } from '../../store/StatusContext.ts'
 import { PERIOD, PeriodContext } from '../../store/PeriodContext.ts'
-
 import { ACTION_TYPE } from '../../store/TodoReducer.ts'
 import { SEARCH_ACTION_TYPE } from '../../store/SearchReducer.ts'
 import { ACTION_STATUS } from '../../store/StatusReducer.ts'
 import { ACTION_PERIOD } from '../../store/PeriodReducer.ts'
-
 import Todo from '../../models/Todo.ts'
 
 import sortNumericUpIcon from './assets/images/sort-numeric-up.svg'

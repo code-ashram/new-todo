@@ -2,16 +2,17 @@ import { useReducer, useState } from 'react'
 
 import SearchFilter from './components/SearchFilter'
 import List from './components/List'
-import todoReducer from './store/TodoReducer.ts'
-import searchReducer from './store/SearchReducer.ts'
-import statusReducer from './store/StatusReducer.ts'
+
 import periodReducer from './store/PeriodReducer.ts'
-import TodoContext from './store/TodoContext.ts'
-import SearchContext from './store/SearchContext.ts'
+import statusReducer from './store/StatusReducer.ts'
+import searchReducer from './store/SearchReducer.ts'
+import todoReducer from './store/TodoReducer.ts'
 import FilterContext, { STATUS } from './store/StatusContext.ts'
 import PeriodContext, { PERIOD } from './store/PeriodContext.ts'
+import SearchContext from './store/SearchContext.ts'
+import TodoContext from './store/TodoContext.ts'
 import mockData from './models/mockData.ts'
-import { SORTING_ORDER } from './utils/utils.ts'
+import { SORTING_ORDER } from './utils'
 
 import './App.scss'
 

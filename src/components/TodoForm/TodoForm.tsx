@@ -1,8 +1,7 @@
 import { FC, FormEvent, useMemo, useState } from 'react'
 
-import Todo from '../../models/Todo.ts'
-
 import { generateTodo, PRIORITY } from '../../utils'
+import Todo from '../../models/Todo.ts'
 
 type Props = {
   isOpen: boolean,

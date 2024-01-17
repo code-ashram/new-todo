@@ -1,5 +1,4 @@
 import { STATUS } from './StatusContext.ts'
-
 export const ACTION_STATUS = 'CHANGE_STATUS'
 
 export type Action = {

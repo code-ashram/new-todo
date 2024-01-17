@@ -1,13 +1,9 @@
 import { FC, useContext, useState } from 'react'
 
 import TodoForm from '../../TodoForm'
-
 import TodoContext from '../../../store/TodoContext.ts'
-
 import { ACTION_TYPE } from '../../../store/TodoReducer.ts'
-
 import { setPriorityImg } from '../../../utils'
-
 import Todo from '../../../models/Todo.ts'
 
 import threeDots from '../assets/images/three-dots.svg'
