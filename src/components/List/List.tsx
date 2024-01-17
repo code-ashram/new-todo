@@ -17,7 +17,7 @@ import {
   sortListByDescendingTitle,
   sortListByFirstDate,
   sortListByLastDate
-} from '../../utils'
+} from '../../utils/utils.ts'
 
 type Props = {
   orderDirection: string

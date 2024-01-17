@@ -2,7 +2,7 @@ import { FC, FormEvent, useMemo, useState } from 'react'
 
 import Todo from '../../models/Todo.ts'
 
-import { PRIORITY } from '../../utils'
+import { generateTodo, PRIORITY } from '../../utils'
 
 type Props = {
   isOpen: boolean,
@@ -12,14 +12,7 @@ type Props = {
 }
 
 const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
-  const [todo, setTodo] = useState<Todo>(task ||
-    {
-      id: crypto.randomUUID(),
-      title: '',
-      isDone: false,
-      priority: 'Mid',
-      creationTime: new Date().toISOString()
-    })
+  const [todo, setTodo] = useState<Todo>(task || generateTodo)
   const isValid: boolean = useMemo(() => Boolean(todo.title), [todo.title])
 
   const handleChangeTodo = (payload: Partial<Todo>): void => {
@@ -28,9 +21,7 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
 
   const handleSubmitTodo = (e: FormEvent) => {
     e.preventDefault()
-
     onSubmit(todo)
-
     setTodo(prevTodo => ({ ...prevTodo, title: '' }))
   }
 

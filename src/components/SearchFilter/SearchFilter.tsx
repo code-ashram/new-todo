@@ -17,11 +17,11 @@ import { ACTION_PERIOD } from '../../store/PeriodReducer.ts'
 
 import Todo from '../../models/Todo.ts'
 
-import sortNumericUpIcon from '../../img/sort-numeric-up.svg'
-import sortNumericDownIcon from '../../img/sort-numeric-down.svg'
-import sortIncreaseTitleIcon from '../../img/sort-increase.svg'
-import sortDecreaseTitleIcon from '../../img/sort-decrease.svg'
-import search from '../../img/search-ico.svg'
+import sortNumericUpIcon from './assets/images/sort-numeric-up.svg'
+import sortNumericDownIcon from './assets/images/sort-numeric-down.svg'
+import sortIncreaseTitleIcon from './assets/images/sort-increase.svg'
+import sortDecreaseTitleIcon from './assets/images/sort-decrease.svg'
+import search from './assets/images/search-ico.svg'
 
 type Props = {
   onOrderByTitle: () => void

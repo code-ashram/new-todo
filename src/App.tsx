@@ -11,7 +11,7 @@ import SearchContext from './store/SearchContext.ts'
 import FilterContext, { STATUS } from './store/StatusContext.ts'
 import PeriodContext, { PERIOD } from './store/PeriodContext.ts'
 import mockData from './models/mockData.ts'
-import { SORTING_ORDER } from './utils'
+import { SORTING_ORDER } from './utils/utils.ts'
 
 import './App.scss'
 

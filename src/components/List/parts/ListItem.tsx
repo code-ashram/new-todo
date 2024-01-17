@@ -10,7 +10,7 @@ import { setPriorityImg } from '../../../utils'
 
 import Todo from '../../../models/Todo.ts'
 
-import threeDots from '../../../img/three-dots.svg'
+import threeDots from '../assets/images/three-dots.svg'
 
 type Props = {
   todo: Todo,
