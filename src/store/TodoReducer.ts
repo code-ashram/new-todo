@@ -5,6 +5,12 @@ export const enum ACTION_TYPE {
   DELETE,
   CREATE,
   UPDATE,
+  REPLACE
+}
+
+export type ReplaceAction = {
+  type: ACTION_TYPE
+  payload: Todo[]
 }
 
 export type EditDeleteAction = {
@@ -24,10 +30,12 @@ export type UpdateAction = {
   payload: Todo
 }
 
-export type Action = EditDeleteAction | CreateAction | UpdateAction
+export type Action = ReplaceAction | EditDeleteAction | CreateAction | UpdateAction
 
 const todoReducer = (state: Todo[], { type, payload }: Action): Todo[] => {
   switch (type) {
+    case ACTION_TYPE.REPLACE:
+      return payload as Todo[]
     case ACTION_TYPE.DELETE:
       return state.filter((todo) => todo.id !== (payload as Pick<Todo, 'id'>).id)
     case ACTION_TYPE.CHANGE_STATUS:
