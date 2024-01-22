@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FC, useContext, useEffect, useRef, useState } from 'react'
 import * as bootstrap from 'bootstrap'
 
 import SortButton from './parts/SortButton.tsx'
@@ -15,16 +15,15 @@ import Todo from '../../models/Todo.ts'
 
 import sortNumericUpIcon from './assets/images/sort-numeric-up.svg'
 import sortNumericDownIcon from './assets/images/sort-numeric-down.svg'
-import sortIncreaseTitleIcon from './assets/images/sort-increase.svg'
-import sortDecreaseTitleIcon from './assets/images/sort-decrease.svg'
 import search from './assets/images/search-ico.svg'
+import { OrderBy } from '../../constants'
 
 type Props = {
-  onOrderByTitle: () => void
-  onOrderByDate: () => void
+  onChangeOrderDirection: () => void
+  onChangeOrderBy: (key: OrderBy) => void
 }
 
-const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
+const SearchFilter: FC<Props> = ({ onChangeOrderDirection, onChangeOrderBy }) => {
   const { dispatch: dispatchTodo } = useContext(TodoContext)
   const { dispatch: dispatchSearch } = useContext(SearchContext)
   const { dispatch: dispatchStatus } = useContext(StatusContext)
@@ -101,6 +100,10 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
     )
   }, [allTasksButtonRef, completedTasksButtonRef, uncompletedTasksButtonRef])
 
+  const handleChangeOrder = (e: ChangeEvent<HTMLSelectElement>) => {
+    onChangeOrderBy(e.target.value as OrderBy)
+  }
+
   return (
     <>
       <TodoForm isOpen={showForm} onClose={handleToggleForm} onSubmit={handleCreateTask} />
@@ -164,15 +167,21 @@ const SearchFilter: FC<Props> = ({ onOrderByTitle, onOrderByDate }) => {
         </button>
 
         <div className="todoSorter d-flex">
-          <SortButton prevImage={sortIncreaseTitleIcon} nextImage={sortDecreaseTitleIcon} onClick={onOrderByTitle} />
+          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={onChangeOrderDirection} />
 
-          <SortButton prevImage={sortNumericDownIcon} nextImage={sortNumericUpIcon} onClick={onOrderByDate} />
+          <select
+            name="formSelect"
+            className="form-select filterSelect"
+            aria-label="Default select example"
+            onChange={handleChangeOrder}
+          >
+            <option value={OrderBy.Date}>{OrderBy.Date}</option>
+            <option value={OrderBy.Title}>{OrderBy.Title}</option>
+          </select>
 
           <select className="form-select filterSelect" aria-label="Default select example" name="formSelect">
             <option value="1" onClick={() => handleChangePeriod(PERIOD.ALL_TIME)}>All</option>
-
             <option value="2" onClick={() => handleChangePeriod(PERIOD.MONTH)}>Last month</option>
-
             <option value="3" onClick={() => handleChangePeriod(PERIOD.WEEK)}>Last week</option>
           </select>
 
