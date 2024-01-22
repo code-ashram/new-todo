@@ -17,6 +17,7 @@ import sortNumericUpIcon from './assets/images/sort-numeric-up.svg'
 import sortNumericDownIcon from './assets/images/sort-numeric-down.svg'
 import search from './assets/images/search-ico.svg'
 import { OrderBy } from '../../constants'
+import { createTodo } from '../../api'
 
 type Props = {
   onChangeOrderDirection: () => void
@@ -38,15 +39,13 @@ const SearchFilter: FC<Props> = ({ onChangeOrderDirection, onChangeOrderBy }) =>
     setShowForm(prevShow => !prevShow)
   }
 
-  const handleCreateTask = (todo: Todo) => {
-    dispatchTodo({
+  const handleCreateTask = (todo: Omit<Todo, 'id'>) => {
+    console.log(todo)
+
+    createTodo(todo).then((response) => dispatchTodo({
       type: ACTION_TYPE.CREATE,
-      payload: {
-        title: todo.title,
-        priority: todo.priority,
-        isDone: todo.isDone
-      }
-    })
+      payload: response
+    }))
 
     handleToggleForm()
   }

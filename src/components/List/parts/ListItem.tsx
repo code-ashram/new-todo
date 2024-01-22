@@ -7,15 +7,16 @@ import { setPriorityImg } from '../../../utils'
 import Todo from '../../../models/Todo.ts'
 
 import threeDots from '../assets/images/three-dots.svg'
+import { getTodo, updateTodo } from '../../../api'
 
 type Props = {
   todo: Todo,
-  handleChangeStatus: (id: string) => void,
+  onChangeStatus: (id: string, isDone: boolean) => void,
   onDelete: (id: string) => void,
   onEdit: (id: string) => void,
 }
 
-const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
+const ListItem: FC<Props> = ({ todo, onChangeStatus, onDelete }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const [showForm, setShowForm] = useState<boolean>(false)
   const { dispatch: dispatchTodo } = useContext(TodoContext)
@@ -33,12 +34,18 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
   }
 
   const handleUpdateTask = (todo: Todo) => {
-    dispatchTodo({
-      type: ACTION_TYPE.UPDATE,
-      payload: todo
+    updateTodo(todo).then((response) => {
+      dispatchTodo({
+        type: ACTION_TYPE.UPDATE,
+        payload: response
+      })
     })
 
     setShowForm(prevShow => !prevShow)
+  }
+
+  const handleGetTodo = () => {
+    getTodo(todo.id).then((response) => alert(JSON.stringify(response)))
   }
 
   return (
@@ -46,14 +53,14 @@ const ListItem: FC<Props> = ({ todo, handleChangeStatus, onDelete }) => {
       {showForm &&
         <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={handleUpdateTask} todo={todo} />}
 
-      <li className="todoListItem list-group-item">
+      <li className="todoListItem list-group-item" onClick={handleGetTodo}>
         <div className="todoListItem__title">
           <input
             type="checkbox"
             id={todo.id}
             className="form-check-input me-1"
             checked={todo.isDone}
-            onChange={() => handleChangeStatus(todo.id)} />
+            onChange={() => onChangeStatus(todo.id, !todo.isDone)} />
           <label className="form-check-label" htmlFor={todo.id}>{todo.title}</label>
         </div>
 

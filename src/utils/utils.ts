@@ -25,8 +25,7 @@ export const sortList = (list: Todo[], orderBy: OrderBy, orderDirection: OrderDi
   }
 }
 
-export const generateTodo = (): Todo => ({
-  id: crypto.randomUUID(),
+export const generateTodo = (): Omit<Todo, 'id'> => ({
   title: '',
   isDone: false,
   priority: 'Mid',

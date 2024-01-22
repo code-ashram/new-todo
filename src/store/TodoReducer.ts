@@ -22,7 +22,7 @@ export type EditDeleteAction = {
 
 export type CreateAction = {
   type: ACTION_TYPE
-  payload: Omit<Todo, 'id' | 'creationTime'>
+  payload: Todo
 }
 
 export type UpdateAction = {
@@ -48,13 +48,7 @@ const todoReducer = (state: Todo[], { type, payload }: Action): Todo[] => {
       )
     case ACTION_TYPE.CREATE:
       return [
-        {
-          id: crypto.randomUUID(),
-          isDone: (payload as Omit<Todo, 'id' | 'creationTime'>).isDone,
-          title: (payload as Omit<Todo, 'id' | 'creationTime'>).title.trim(),
-          creationTime: new Date().toISOString(),
-          priority: (payload as Omit<Todo, 'id' | 'creationTime'>).priority
-        },
+        payload as Todo,
         ...state
       ]
     case ACTION_TYPE.UPDATE:

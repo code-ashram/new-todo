@@ -3,15 +3,18 @@ import { FC, FormEvent, useMemo, useState } from 'react'
 import { generateTodo, PRIORITY } from '../../utils'
 import Todo from '../../models/Todo.ts'
 
+type OnCreate = (todo: Omit<Todo, 'id'>) => void
+type OnUpdate = (todo: Todo) => void
+
 type Props = {
   isOpen: boolean,
   onClose: () => void,
-  onSubmit: (todo: Todo) => void,
+  onSubmit: OnCreate | OnUpdate,
   todo?: Todo
 }
 
 const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
-  const [todo, setTodo] = useState<Todo>(task || generateTodo)
+  const [todo, setTodo] = useState<Omit<Todo, 'id'> | Todo>(task || generateTodo)
   const isValid: boolean = useMemo(() => Boolean(todo.title), [todo.title])
 
   const handleChangeTodo = (payload: Partial<Todo>): void => {
@@ -20,7 +23,7 @@ const TodoForm: FC<Props> = ({ isOpen, onClose, onSubmit, todo: task }) => {
 
   const handleSubmitTodo = (e: FormEvent) => {
     e.preventDefault()
-    onSubmit(todo)
+    onSubmit(todo as Todo)
     setTodo(prevTodo => ({ ...prevTodo, title: '' }))
   }
 

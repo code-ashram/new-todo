@@ -8,14 +8,7 @@ import { STATUS, StatusContext } from '../../store/StatusContext.ts'
 import { ACTION_TYPE } from '../../store/TodoReducer.ts'
 import { OrderBy, OrderDirection } from '../../constants'
 import { sortList } from '../../utils'
-// import Todo from '../../models/Todo.ts'
-// import {
-//   SORTING_ORDER,
-//   sortListByAscendingTitle,
-//   sortListByDescendingTitle,
-//   sortListByFirstDate,
-//   sortListByLastDate
-// } from '../../utils'
+import { deleteTodo, patchTodo } from '../../api'
 
 type Props = {
   orderDirection: OrderDirection
@@ -56,16 +49,20 @@ const List: FC<Props> = ({ orderDirection, orderBy }) => {
   )
 
   const handleDeleteTask = (id: string) => {
-    dispatch({
-      type: ACTION_TYPE.DELETE,
-      payload: { id }
+    deleteTodo(id).then(() => {
+      dispatch({
+        type: ACTION_TYPE.DELETE,
+        payload: { id }
+      })
     })
   }
 
-  const toggleStatusTask = (id: string) => {
-    dispatch({
-      type: ACTION_TYPE.CHANGE_STATUS,
-      payload: { id }
+  const toggleStatusTask = (id: string, isDone: boolean) => {
+    patchTodo(id, { isDone }).then(() => {
+      dispatch({
+        type: ACTION_TYPE.CHANGE_STATUS,
+        payload: { id }
+      })
     })
   }
 
@@ -84,7 +81,7 @@ const List: FC<Props> = ({ orderDirection, orderBy }) => {
             <ListItem
               key={todo.id}
               todo={todo}
-              handleChangeStatus={toggleStatusTask}
+              onChangeStatus={toggleStatusTask}
               onDelete={handleDeleteTask}
               onEdit={handleEditTask}
             />
