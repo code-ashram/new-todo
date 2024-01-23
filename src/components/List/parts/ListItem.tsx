@@ -54,7 +54,7 @@ const ListItem: FC<Props> = ({ todo, onChangeStatus, onDelete }) => {
         <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={handleUpdateTask} todo={todo} />}
 
       <li className="todoListItem list-group-item" onClick={handleGetTodo}>
-        <div className="todoListItem__title">
+        <div className="todoListItem__title" onClick={(e) => e.stopPropagation()}>
           <input
             type="checkbox"
             id={todo.id}
