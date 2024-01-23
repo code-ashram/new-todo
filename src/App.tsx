@@ -13,10 +13,10 @@ import FilterContext, { STATUS } from './store/StatusContext.ts'
 import PeriodContext, { PERIOD } from './store/PeriodContext.ts'
 import SearchContext from './store/SearchContext.ts'
 import TodoContext from './store/TodoContext.ts'
-// import { SORTING_ORDER } from './utils'
-import './App.scss'
-import { getTodos } from './api/client.ts'
+import { getTodos } from './api'
 import { OrderBy, OrderDirection } from './constants'
+
+import './App.scss'
 
 const App = () => {
   const [tasks, dispatchTodo] = useReducer(todoReducer, [])

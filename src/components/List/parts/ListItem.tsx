@@ -54,7 +54,7 @@ const ListItem: FC<Props> = ({ todo, onChangeStatus, onDelete }) => {
         <TodoForm isOpen={showForm} onClose={handleShowForm} onSubmit={handleUpdateTask} todo={todo} />}
 
       <li className="todoListItem list-group-item" onClick={handleGetTodo}>
-        <div className="todoListItem__title">
+        <div className="todoListItem__title" onClick={(e) => e.stopPropagation()}>
           <input
             type="checkbox"
             id={todo.id}
@@ -64,7 +64,7 @@ const ListItem: FC<Props> = ({ todo, onChangeStatus, onDelete }) => {
           <label className="form-check-label" htmlFor={todo.id}>{todo.title}</label>
         </div>
 
-        <div className="todoListItemControl">
+        <div className="todoListItemControl" onClick={(e) => e.stopPropagation()}>
           <img className="priority" src={setPriorityImg(todo.priority)} alt="priority img" />
 
           <p className="todoListItemDate">
